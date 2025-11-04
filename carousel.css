@@ -1,0 +1,92 @@
+/*Értékelések*/
+.reviews-carousel{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 60px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}.carousel-container{
+    overflow: hidden;
+}.carousel-slide{
+    display: none;
+    text-align: left;
+    padding: 20px;
+}.carousel-slide.active{
+    display: block;
+}.review-text{
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 15px;
+}.reviewer{
+    font-size: 14px;
+    color: #1e3c6e;
+    font-weight: bold;
+    margin-bottom: 5px;
+}.stars{
+    font-size: 18px;
+    margin-bottom: 10px;
+}.carousel-button{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #1e3c6e;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 10;
+}.carousel-button.prev{
+    left: 10px;
+}.carousel-button.next{
+    right: 10px;
+}/*
+ * Dark mode felülírások. Ezek a szabályok a testimonials-karusszel
+ * komponens színeit és háttereit igazítják a sötét témához. A CSS
+ * változókat a fő stílusfájlban definiáltuk, ezért itt is azokkal
+ * dolgozunk.
+ */
+.dark-mode .reviews-carousel{
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}.dark-mode .review-text{
+    color: var(--text-color);
+}.dark-mode .reviewer{
+    color: var(--accent-color);
+}.dark-mode .carousel-button{
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+}.dark-mode .carousel-slide{
+    color: var(--text-color);
+}
+header .site-title { display:block; }
+
+
+/* === Header brand typographic parity (light theme safe) === */
+header .site-title {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 2.5em;
+  line-height: 1.2;
+  margin: 0;
+  color: inherit; /* inherits from header rules; color already handled by existing theme styles */
+}
+
+:root:not([data-theme="dark"]) header .site-title {
+  /* If light theme computes different color, ensure it follows the same var as headings */
+  color: var(--text-color);
+}
+
+
+
+/* === Force header brand to white in all themes === */
+header .site-title,
+header .site-title::before,
+header .site-title::after {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important; /* in case of special text-fill usage */
+}
+

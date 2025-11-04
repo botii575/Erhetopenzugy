@@ -1,0 +1,1108 @@
+
+<!DOCTYPE html>
+
+<html lang="hu">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tőketartozás Kalkulátor | Érthető Pénzügy</title>
+<meta content="Számolja ki fennálló tőketartozását a Tőketartozás Kalkulátor segítségével. Egyszerű, gyors és érthető eszköz az Érthető Pénzügy csapatától." name="description"/>
+<meta content="tőketartozás, hitelkalkulátor, törlesztőrészlet, hitel visszafizetés, kalkulátor" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<meta content="Érthető Pénzügy" name="author"/>
+<link href="https://www.erthetopenzugy.hu/kalkulator.html" rel="canonical"/>
+<meta content="Tőketartozás Kalkulátor | Érthető Pénzügy" property="og:title">
+<meta content="Számolja ki fennálló tőketartozását online! Egyszerű és pontos kalkulátor az Érthető Pénzügy weboldalán." property="og:description">
+<meta content="https://www.erthetopenzugy.hu/kalkulator.html" property="og:url">
+<meta content="website" property="og:type">
+<meta content="https://www.erthetopenzugy.hu/logo.webp" property="og:image"/>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Érthető Pénzügy",
+    "url": "https://www.erthetopenzugy.hu",
+    "logo": "https://www.erthetopenzugy.hu/images/favicon.png",
+    "description": "Személyre szabott pénzügyi tanácsadás: biztosítás, hitel, befektetés, nyugdíj, gyermek megtakarítás, kgfb, casco, adókedvezmények.",
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61569678660948",
+      "https://www.instagram.com/ertheto_penzugy"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+36 20 296 7292",
+      "contactType": "customer service",
+      "areaServed": "HU",
+      "availableLanguage": "Hungarian"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Vörösmarty tér 4",
+      "addressLocality": "Veszprém",
+      "postalCode": "8200",
+      "addressCountry": "HU"
+    }
+  }
+  </script>
+<style>
+    /* Színek igazítása a globális téma változókhoz. */
+    :root {
+      --blue: var(--accent-color);
+      --red: #cc0000;
+      --bg: var(--bg-color);
+      --ink: var(--text-color);
+    }
+    body {
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+    }
+    main.container{max-width:1050px;margin:32px auto;padding:0 16px}
+    h2{margin:0 0 10px}
+    .info-card{background:#fff3cd;border:1px solid #ffe08a;border-radius:12px;padding:12px;margin-bottom:16px}
+    .contact-form{background:#fff;border-radius:14px;padding:16px;box-shadow:0 6px 18px rgba(0,0,0,.05)}
+    label{display:block;font-weight:600;margin-top:10px}
+    input[type="text"],input[type="number"],input[type="date"]{width:100%;padding:10px 12px;border:1px solid #d9dee3;border-radius:10px;font:inherit}
+    button{cursor:pointer}
+    button.primary{background:var(--blue);color:#fff;border:none;border-radius:12px;padding:12px 16px;font-weight:700;margin-top:12px}
+    #output{background:#fff;border-radius:14px;padding:16px;box-shadow:0 6px 18px rgba(0,0,0,.05);margin-top:16px}
+    .kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:16px}
+    .kpi .item{background:#fff;border-radius:14px;padding:14px;text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.04)}
+    .kpi .val{font-size:1.2rem;font-weight:700}
+    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .tooltip{display:inline-block;width:18px;height:18px;border-radius:50%;background:#eef2f7;color:#334;line-height:18px;text-align:center;font-size:12px;margin-left:6px}
+    .muted{color:#65727d;font-size:.9rem}
+    .warn{background:#fff;border-left:4px solid #ff6f00;border-radius:10px;padding:10px;margin-top:10px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:16px}
+    .card{background:#fff;border-radius:14px;padding:16px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+    @media(max-width:900px){ .kpi{grid-template-columns:repeat(2,1fr)} .grid{grid-template-columns:1fr} }
+  
+    /* ==== Layout fine-tuning for inputs & cards ==== */
+    #kalkulator .card, 
+    #kalkulator .contact-form {
+      overflow: hidden; /* clip rounded corners */
+    }
+    #kalkulator input, 
+    #kalkulator select, 
+    #kalkulator textarea {
+      box-sizing: border-box; /* avoid right-edge overflow */
+      max-width: 100%;
+      background-clip: padding-box;
+    }
+    
+    /* ==== UI / spacing refinements ==== */
+    #kalkulator h3 { margin: 0 0 8px; }
+    #kalkulator .card { padding: 14px; }
+    #kalkulator canvas { display:block; width:100% !important; height:260px !important; margin: 6px 0 6px; }
+    #kalkulator #firstYearNote { margin-top: 8px; }
+    #kalkulator #output { margin-top: 16px; }
+    #kalkulator #amortizationTable { margin-top: 16px; }
+    /* KPI highlights */
+    #kalkulator .kpi .item.special {
+      border: 1px solid #dbeafe;
+      background: linear-gradient(180deg, #f0f7ff, #ffffff);
+    }
+    #kalkulator .kpi .item.special .val { color: #0b5394; }
+    /* Responsive tuning */
+    @media (max-width: 900px){
+      #kalkulator .card { padding: 12px; }
+      #kalkulator canvas { height: 240px !important; }
+      #kalkulator .kpi .val { font-size: 1.1rem; }
+    }
+    @media (max-width: 900px){ #kalkulator .kpi { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (max-width: 600px){
+      #kalkulator .card { padding: 10px; }
+      #kalkulator h3 { font-size: 1rem; }
+      #kalkulator canvas { height: 220px !important; }
+      #kalkulator .kpi { grid-template-columns: 1fr; }
+      #kalkulator .kpi .val { font-size: 1.05rem; }
+    }
+    
+    /* ==== KPI auto-fit for large amounts ==== */
+    #kalkulator .kpi { gap: 14px; grid-template-columns: repeat(3, minmax(0,1fr)); margin-bottom:14px; }
+    #kalkulator .kpi .item {
+      min-height: 92px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 12px;
+    }
+    /* Provide a reasonable max font for desktop; JS will downsize if needed */
+    #kalkulator .kpi .val {
+      --kpi-max: 1.6;  /* rem */
+      font-size: calc(var(--kpi-max) * 1rem);
+      font-weight: 700;
+      line-height: 1.15;
+      white-space: normal;     /* wrapping allowed as last resort */
+      word-break: keep-all;    /* ne tördelje a számot karakterenként */
+    }
+    @media (max-width: 900px){
+      #kalkulator .kpi .val { --kpi-max: 1.4; }
+    }
+    @media (max-width: 900px){ #kalkulator .kpi { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (max-width: 600px){
+      #kalkulator .kpi .item { min-height: 84px; }
+      #kalkulator .kpi .val { --kpi-max: 1.2; }
+    }
+  
+/* === Amortizációs táblázat – egységes, olvasható formázás === */
+#amortizationTable table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  table-layout: fixed;
+}
+
+#amortizationTable th, 
+#amortizationTable td {
+  border: 1px solid #d9dee3;
+  padding: 8px 10px;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#amortizationTable th {
+  background: #f0f4f8;
+  font-weight: 600;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+#amortizationTable tbody tr:nth-child(even) { background: #fafafa; }
+#amortizationTable tbody tr:hover { background: #f5faff; }
+
+/* Hónap + Dátum középre, a többi jobbra */
+#amortizationTable td:nth-child(1),
+#amortizationTable td:nth-child(2) {
+  text-align: center;
+}
+
+/* Kisebb kijelzőn kisebb betű */
+@media (max-width: 600px){
+  #amortizationTable table { font-size: 0.9rem; }
+}
+
+</style>
+<link href="styles.css" rel="stylesheet"/>
+<!-- Sötét téma felülírásai a kalkulátorhoz (a globális stílus után, hogy felülírja azokat) -->
+<style>
+    /* Kalkulátor: kártyák, inputok és szövegek sötét témában */
+    body.dark-mode #kalkulator input[type="text"],
+    body.dark-mode #kalkulator input[type="number"],
+    body.dark-mode #kalkulator input[type="date"],
+    body.dark-mode #kalkulator select,
+    body.dark-mode #kalkulator textarea {
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      border-color: var(--accent-color);
+    }
+
+    body.dark-mode #kalkulator .card,
+    body.dark-mode #kalkulator .contact-form,
+    body.dark-mode #kalkulator #output,
+    body.dark-mode #kalkulator .kpi .item {
+      background-color: var(--card-bg);
+      color: var(--text-color);
+    }
+
+    /* Kiemelt KPI kártyák */
+    body.dark-mode #kalkulator .kpi .item.special {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border: 1px solid var(--accent-color);
+    }
+    body.dark-mode #kalkulator .kpi .item.special .val {
+      color: var(--accent-color);
+    }
+
+    /* KPI értékek és feliratok */
+    body.dark-mode #kalkulator .kpi .val {
+      color: var(--accent-color) !important;
+      opacity: 1;
+    }
+    body.dark-mode #kalkulator .muted {
+      color: var(--text-color);
+      opacity: 0.8;
+    }
+
+    /* Figyelmeztető doboz */
+    body.dark-mode #kalkulator .warn {
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      border-left-color: var(--accent-color);
+    }
+
+    /* Tooltip színek */
+    body.dark-mode #kalkulator .tooltip {
+      background-color: var(--accent-color);
+      color: var(--bg-color);
+    }
+
+    /* Amortizációs tábla sötét mód: színek és kontraszt */
+    /* Amortizációs táblázat: nagyobb kontraszt a sötét témában */
+    body.dark-mode #kalkulator #amortizationTable table {
+      /* a teljes táblázat világos színek között jelenjen meg */
+      border-color: var(--accent-color) !important;
+      color: var(--text-color) !important;
+      opacity: 1 !important;
+    }
+
+    /* A tábla külső konténere is legyen világosabb, hogy a sorok jól látszódjanak */
+    body.dark-mode #kalkulator #amortizationTable {
+      background-color: var(--card-bg) !important;
+      color: var(--text-color) !important;
+    }
+
+    /*
+     * Amortizációs táblázat egyedi osztállyal ('am-table'): ezzel biztosítjuk,
+     * hogy a sötét témában a cellák és sorok kontrasztosak legyenek. A
+     * JavaScript kód a táblázatot ezzel az osztállyal hozza létre.
+     */
+    body.dark-mode #kalkulator .am-table th,
+    body.dark-mode #kalkulator .am-table td {
+      color: var(--text-color) !important;
+      border-color: var(--accent-color) !important;
+    }
+    body.dark-mode #kalkulator .am-table tr:nth-child(odd) {
+      background-color: rgba(255, 255, 255, 0.12) !important;
+    }
+    body.dark-mode #kalkulator .am-table tr:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.18) !important;
+    }
+    body.dark-mode #kalkulator .am-table tr:hover {
+      background-color: rgba(255, 255, 255, 0.25) !important;
+    }
+    body.dark-mode #kalkulator #amortizationTable th,
+    body.dark-mode #kalkulator #amortizationTable td {
+      /* cellák és fejlécek szövege legyen teljesen világos */
+      color: var(--text-color) !important;
+      border-color: var(--accent-color) !important;
+      opacity: 1 !important;
+    }
+    body.dark-mode #kalkulator #amortizationTable th {
+      /* fejléc háttér legyen kissé sötétebb a kártyánál */
+      background-color: rgba(255, 255, 255, 0.08) !important;
+    }
+    body.dark-mode #kalkulator #amortizationTable tbody tr:nth-child(odd) {
+      /* a páratlan sorok legyenek jobban kiemelve – áttetsző világos hátterek */
+      background-color: rgba(255, 255, 255, 0.12) !important;
+    }
+    body.dark-mode #kalkulator #amortizationTable tbody tr:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.18) !important;
+    }
+    body.dark-mode #kalkulator #amortizationTable tbody tr:hover {
+      /* hover esetén még világosabb árnyalat */
+      background-color: rgba(255, 255, 255, 0.25) !important;
+    }
+  </style>
+<!-- Cookie banner stílusok -->
+<link href="cookies.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+</meta></meta></meta></meta></head>
+<body>
+<!-- Oldal fejléce a főoldalról átemelve -->
+<header>
+<picture>
+<source media="(max-width: 600px)" srcset="images/header_background-400.webp"/>
+<source media="(max-width: 1024px)" srcset="images/header_background-800.webp"/>
+<!-- Descriptive alt text and lazy loading for the calculator hero image -->
+<img alt="Kalkulátor fejléc háttér" loading="lazy" src="images/header_background-1200.webp"/>
+</picture>
+<div class="header-overlay"></div>
+<div class="site-title">Érthető Pénzügy</div>
+<button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+</header>
+<!-- Navigációs menü: ugyanaz a struktúra, mint a főoldalon, de relatív linkekkel -->
+<nav class="compact-nav" id="mobileNav">
+<ul>
+<li><a href="index.html#start" onclick="toggleMobileMenu()">Bemutatkozás</a></li>
+<li><a href="index.html#szolgaltatasok" onclick="toggleMobileMenu()">Szolgáltatások</a></li>
+<li><a href="index.html#tanacsadoink" onclick="toggleMobileMenu()">Tanácsadóink</a></li>
+<li><a href="index.html#rolunk" onclick="toggleMobileMenu()">Rólunk írták</a></li>
+<li><a href="index.html#kapcsolat" onclick="toggleMobileMenu()">Kapcsolat</a></li>
+<li><a href="index.html#karrier" onclick="toggleMobileMenu()">Karrier</a></li>
+<li><a href="kalkulator.html" onclick="toggleMobileMenu()">Kalkulátor</a></li>
+<li><a href="blog.html" onclick="toggleMobileMenu()">Blog</a></li>
+</ul>
+</nav>
+<main class="container" id="kalkulator">
+<h1>Tőketartozás kalkulátor (Annuitás)</h1>
+<div class="info-card">
+<strong>Fontos!</strong> A kalkuláció eredménye <strong>tájékoztató jellegű</strong>, nem minősül hitelajánlatnak vagy hivatalos igazolásnak.
+    </div>
+<div class="grid">
+<section class="card" style="grid-column: span 6">
+<h3>Alap adatok</h3>
+<label>Hitel kezdete <span class="tooltip" title="Az első törlesztőrészlet napja.">i</span></label>
+<input id="startDate" type="date"/>
+<label>Hitelösszeg </label>
+<input id="amount" placeholder="Pl. 10 000 000" type="text"/>
+<label>Kamat (% / év) <span class="tooltip" title="Nominális éves kamat. A csúszkával is állítható.">i</span></label>
+<div class="row">
+<input id="rate" placeholder="Pl. 6" step="0.01" style="max-width:140px" type="number"/>
+<input id="rateSlider" max="25" min="0.5" step="0.05" style="flex:1" type="range" value="6"/>
+<span class="muted" id="rateLabel">6,00%</span>
+</div>
+<label>Futamidő (év)</label>
+<input id="term" placeholder="Pl. 20" type="number">
+<button class="primary" id="calcBtn">Számolás</button>
+<div id="warnings"></div>
+</input></section>
+<section class="card" style="grid-column: span 6">
+<h3>Áttekintés</h3>
+<div class="kpi">
+<div class="item"><div class="muted">Havi törlesztő</div><div class="val" id="kpiPayment">–</div></div>
+<div class="item"><div class="muted">Teljes kamat</div><div class="val" id="kpiTotalInterest">–</div></div>
+<div class="item"><div class="muted">Jelenlegi tőketartozás</div><div class="val" id="kpiOutstanding">–</div></div>
+</div>
+<div class="kpi" style="grid-template-columns: repeat(2, minmax(0,1fr));">
+<div class="item special"><div class="muted">Teljes visszafizetés</div><div class="val" id="kpiTotalPaid">–</div></div>
+<div class="item special"><div class="muted">Fordulópont</div><div class="val" id="kpiSwitch">–</div></div>
+</div>
+</section>
+</div>
+<div class="grid">
+<section class="card" style="grid-column: span 7">
+<h3>Kamat vs. Tőke arány időben</h3>
+<canvas id="loanChart" style="max-width:100%; margin-top:10px;"></canvas>
+</section>
+<section class="card" style="grid-column: span 5">
+<h3>1. év bontása</h3>
+<canvas height="180" id="year1Chart"></canvas>
+<div class="muted" id="firstYearNote" style="margin-top:8px"></div>
+</section>
+</div>
+<div class="result card" id="output" style="display:none"></div>
+<section class="card" style="margin-top: 24px;">
+<h3>Kamatérzékenységi szimuláció</h3>
+<p class="muted">Próbáld ki, hogyan változik a havi törlesztő és teljes visszafizetés eltérő kamatszinteknél!</p>
+<div class="contact-form" style="margin-top: 12px;">
+<div class="row" style="align-items:center;gap:10px">
+<label style="margin:0">± eltérés (%)</label>
+<input id="deltaInput" max="10" min="0" step="0.1" style="max-width:90px" type="number" value="1.0"/>
+<input id="deltaSlider" max="10" min="0" step="0.1" style="flex:1" type="range" value="1.0"/>
+</div>
+<div class="muted" id="scenarioHint" style="margin-top:8px; display:none"></div>
+<div id="scenarioResults" style="margin-top: 8px; display: grid; gap: 6px;"></div>
+</div>
+</section>
+<section class="card" style="margin-top: 16px;">
+<h3>Eredmények letöltése</h3>
+<p class="muted">Töltse le a teljes táblázatot PDF formátumban.</p>
+<button class="primary" id="downloadPDF" style="display:none;">📄 PDF mentés</button>
+</section>
+<div class="card" id="amortizationTable" style="overflow-x:auto; margin-top:16px;"></div>
+</main>
+<!-- Lábjegyzet és jogi információk -->
+<footer>
+<div class="social-icons">
+<a href="https://www.facebook.com/profile.php?id=61569678660948"><i class="fab fa-facebook"></i></a>
+<a href="https://www.instagram.com/ertheto_penzugy"><i class="fab fa-instagram"></i></a>
+</div>
+<p>© 2024 Érthető Pénzügy. Minden jog fenntartva.</p>
+<p>E‑mail: kapcsolat@erthetopenzugy.hu | Tel: 06202967292</p>
+<p>Cím: 8200, Veszprém, Vörösmarty tér 4</p>
+<div class="legal-links">
+<a href="#" onclick="showContent('adatkezeles');return false;">Adatkezelési tájékoztató</a> |
+      <a href="#" onclick="showContent('impresszum');return false;">Impresszum</a>
+</div>
+</footer>
+<div class="scroll-top">
+<i class="fas fa-chevron-up"></i>
+</div>
+<!-- Adatvédelmi tájékoztató modal (teljes változat) -->
+<!-- Teljes Adatkezelési tájékoztató modal a kalkulátorhoz -->
+<div class="modal" id="adatkezeles">
+<div class="modal-content">
+<span class="close" onclick="hideContent('adatkezeles')">×</span>
+<h2>Adatkezelési tájékoztató</h2>
+<div class="accordion">
+<div class="accordion-item" id="adatkezelo">
+<h3 class="accordion-header">1. Az adatkezelő adatai</h3>
+<div class="accordion-content">
+<div class="info-card">
+<p><i class="fas fa-building"></i> <strong>Név:</strong> Horváth Gonna Solve It Korlátolt Felelősségű Társaság</p>
+<p><i class="fas fa-map-marker-alt"></i> <strong>Székhely:</strong> 8230 Balatonfüred, Krúdy Gyula sor 4/B.</p>
+<p><i class="fas fa-file-alt"></i> <strong>Cégjegyzékszám:</strong> 19-09-523953</p>
+<p><i class="fas fa-id-card"></i> <strong>Adószám:</strong> 32330430-1-19</p>
+<p><i class="fas fa-envelope"></i> <strong>E-mail:</strong> kapcsolat@erthetopenzugy.hu</p>
+<p><i class="fas fa-phone"></i> <strong>Telefon:</strong> +36 20 296 7292</p>
+</div>
+</div>
+</div>
+<div class="accordion-item" id="kezelt-adatok">
+<h3 class="accordion-header">2. A kezelt személyes adatok köre</h3>
+<div class="accordion-content">
+<p>Weboldalunk látogatása során a következő személyes adatokat kezeljük:</p>
+<ul>
+<li>IP cím</li>
+<li>A látogatás időpontja</li>
+<li>A megtekintett oldalak adatai</li>
+<li>Az Ön által használt böngésző és operációs rendszer típusa</li>
+</ul>
+<p>Ingyenes tanácsadásra való jelentkezés esetén az alábbi adatokat gyűjtjük:</p>
+<ul>
+<li>Név</li>
+<li>E-mail cím</li>
+<li>Telefonszám</li>
+</ul>
+</div>
+</div>
+<div class="accordion-item" id="cel-jogalap">
+<h3 class="accordion-header">3. Az adatkezelés célja és jogalapja</h3>
+<div class="accordion-content">
+<p>Adatkezelésünk célja:</p>
+<ul>
+<li>A weboldal megfelelő működésének biztosítása</li>
+<li>A felhasználói élmény javítása</li>
+<li>Kapcsolattartás az ügyfelekkel</li>
+<li>Szolgáltatásaink fejlesztése</li>
+<li>Ingyenes tanácsadás biztosítása és időpontegyeztetés</li>
+</ul>
+<p>Az adatkezelés jogalapja:</p>
+<ul>
+<li>A weboldal működéséhez szükséges adatok esetében: jogos érdek (GDPR 6. cikk (1) bekezdés f) pont)</li>
+<li>Az ingyenes tanácsadásra való jelentkezés során megadott adatok esetében: az Ön önkéntes hozzájárulása (GDPR 6. cikk (1) bekezdés a) pont)</li>
+</ul>
+</div>
+</div>
+<div class="accordion-item" id="idotartam">
+<h3 class="accordion-header">4. Az adatkezelés időtartama</h3>
+<div class="accordion-content">
+<ul>
+<li>A látogatással kapcsolatos adatokat 30 napig őrizzük meg.</li>
+<li>Az ingyenes tanácsadásra való jelentkezés során megadott adatokat a tanácsadás lebonyolítását követő 30 napig, vagy az Ön hozzájárulásának visszavonásáig tároljuk.</li>
+<li>A kapcsolatfelvétel során megadott egyéb adatokat az ügy lezárását követő 1 évig tároljuk, kivéve, ha jogszabály hosszabb megőrzési időt ír elő.</li>
+</ul>
+</div>
+</div>
+<div class="accordion-item" id="jogok">
+<h3 class="accordion-header">5. Az Ön jogai</h3>
+<div class="accordion-content">
+<p>Önnek joga van:</p>
+<ul>
+<li>Tájékoztatást kérni az adatkezelésről</li>
+<li>Hozzáférni a kezelt adataihoz</li>
+<li>Kérni az adatok helyesbítését vagy törlését</li>
+<li>Tiltakozni az adatkezelés ellen</li>
+<li>Adathordozhatósághoz való jogát gyakorolni</li>
+<li>Visszavonni a hozzájárulását az adatkezeléshez</li>
+</ul>
+<p>Az adatai törlését vagy a hozzájárulás visszavonását a kapcsolat@erthetopenzugy.hu e-mail címen kérheti.</p>
+</div>
+</div>
+<div class="accordion-item" id="adatbiztonsag">
+<div class="accordion-item" id="adattovabbitas">
+<h3 class="accordion-header">7. Adattovábbítás</h3>
+<div class="accordion-content">
+<p>Az Ön által megadott személyes adatokat nem továbbítjuk harmadik félnek, kivéve:</p>
+<ul>
+<li>Jogszabályi kötelezettség esetén</li>
+<li>
+                  Google Analytics szolgáltatás használata keretében, melynek során az adatok az Egyesült Államokba kerülnek átvitelre. Az adattovábbítás jogalapja az Ön hozzájárulása (GDPR 6. cikk (1) bekezdés a) pont), valamint a Google LLC részvétele az EU–US Data Privacy Framework alapján, amelyet az Európai Bizottság megfelelőségi határozata elismer (GDPR 45. cikk).
+                </li>
+</ul>
+<p>Harmadik országba történő adattovábbítás esetén a GDPR 44-49. cikkeiben foglalt garanciákat alkalmazzuk.</p>
+</div>
+</div>
+</div>
+<div class="accordion-item" id="automatalt-dontes">
+<h3 class="accordion-header">8. Automatizált döntéshozatal</h3>
+<div class="accordion-content">
+<p>Weboldalunk nem alkalmaz automatizált döntéshozatali folyamatokat, beleértve a profilalkotást sem.</p>
+</div>
+</div>
+<div class="accordion-item" id="sutik">
+<h3 class="accordion-header">9. Sütik (cookie-k) kezelése</h3>
+<div class="accordion-content">
+<section class="cookie-policy">
+<h3>Cookie Szabályzat</h3>
+<h4>Milyen sütiket használunk?</h4>
+<div class="table-container">
+<table>
+<tr>
+<th>Cookie típus</th>
+<th>Név</th>
+<th>Cél</th>
+<th>Élettartam</th>
+</tr>
+<tr>
+<td data-label="Cookie típus">Szükséges</td>
+<td data-label="Név">session_cookie</td>
+<td data-label="Cél">Munkamenet nyilvántartás</td>
+<td data-label="Élettartam">Munkamenet végéig</td>
+</tr>
+<tr>
+<td data-label="Cookie típus">Analitikai</td>
+<td data-label="Név">_ga</td>
+<td data-label="Cél">Látogatók azonosítása (Google Analytics)</td>
+<td data-label="Élettartam">2 év</td>
+</tr>
+<tr>
+<td data-label="Cookie típus">Analitikai</td>
+<td data-label="Név">_gid</td>
+<td data-label="Cél">Látogatók megkülönböztetése (Google Analytics)</td>
+<td data-label="Élettartam">24 óra</td>
+</tr>
+<tr>
+<td data-label="Cookie típus">Analitikai</td>
+<td data-label="Név">_gat</td>
+<td data-label="Cél">Kérések korlátozása (Google Analytics)</td>
+<td data-label="Élettartam">1 perc</td>
+</tr>
+</table>
+</div>
+<div class="cookie-settings">
+<h4>Süti beállítások</h4>
+<label>
+<input checked="" disabled="" id="essential-cookies" type="checkbox">
+                  Elengedhetetlen sütik
+                </input></label>
+<label>
+<input id="analytics-cookies" type="checkbox">
+                  Analitikai sütik
+                </input></label>
+<button class="button" onclick="saveCookieSettings()">Beállítások mentése</button>
+</div>
+</section>
+</div>
+</div>
+<div class="accordion-item" id="panasztetel">
+<h3 class="accordion-header">10. Panasztételi jog</h3>
+<div class="accordion-content">
+<p>Ön jogosult panaszt tenni a felügyeleti hatóságnál, ha úgy érzi, hogy személyes adatainak kezelése nem felel meg a jogszabályi követelményeknek. A felügyeleti hatóság elérhetősége:</p>
+<div class="info-card">
+<p><strong>Nemzeti Adatvédelmi és Információszabadság Hatóság</strong></p>
+<p><i class="fas fa-map-marker-alt"></i> Cím: 1055 Budapest, Falk Miksa utca 9-11.</p>
+<p><i class="fas fa-envelope"></i> Postacím: 1363 Budapest, Pf.: 9.</p>
+<p><i class="fas fa-phone"></i> Telefon: +36 1 391 1400</p>
+<p><i class="fas fa-envelope"></i> E-mail: ugyfelszolgalat@naih.hu</p>
+<p><i class="fas fa-globe"></i> Weboldal: https://www.naih.hu/</p>
+</div>
+</div>
+</div>
+<div class="accordion-item" id="felulvizsgalat">
+<h3 class="accordion-header">11. Az adatvédelmi nyilatkozat felülvizsgálata</h3>
+<div class="accordion-content">
+<p>Jelen adatvédelmi nyilatkozatot rendszeresen, de legalább évente felülvizsgáljuk és szükség esetén frissítjük.</p>
+</div>
+</div>
+<div class="accordion-item" id="kapcsolat">
+<h3 class="accordion-header">12. Kapcsolat</h3>
+<div class="accordion-content">
+<p>Adatvédelemmel kapcsolatos kérdéseivel forduljon hozzánk bizalommal az alábbi elérhetőségeken:</p>
+<div class="info-card">
+<p><i class="fas fa-envelope"></i> E-mail: kapcsolat@erthetopenzugy.hu</p>
+<p><i class="fas fa-phone"></i> Telefon: 06 20 296 7292</p>
+</div>
+</div>
+</div>
+<div class="accordion-item" id="kulso-szolgaltatok">
+<h3 class="accordion-header">13. Külső szolgáltatók igénybevétele (Google Forms, Gmail)</h3>
+<div class="accordion-content">
+<p>
+              A kapcsolatfelvételi űrlap kitöltése során megadott személyes adatokat a Google LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA) szolgáltatásai – Google Forms, Google Sheets és Gmail – dolgozzák fel technikai eszközeikkel.
+            </p>
+<p>
+              Az űrlap és annak válaszai a Google európai adatközpontjaiban kerülnek rögzítésre. Az automatikus értesítés a Gmail szolgáltatáson keresztül kerül továbbításra az adatkezelő emailcímére (kapcsolat@erthetopenzugy.hu).
+            </p>
+<p>
+              A Google LLC az Európai Unió és az Egyesült Államok közötti Adatvédelmi Keretrendszer (EU–US Data Privacy Framework) alapján megfelelőségi nyilatkozattal rendelkezik, így az adattovábbítás jogalapja a GDPR 45. cikk szerinti megfelelőségi határozat.
+            </p>
+<p>
+              Nem történik automatizált döntéshozatal vagy profilalkotás.
+            </p>
+</div>
+</div>
+<p class="last-updated">Utolsó frissítés dátuma: 2025.04.30.</p>
+</div>
+</div>
+</div>
+<!-- Impresszum modal (rövidített változat) -->
+<div class="modal" id="impresszum">
+<div class="modal-content">
+<span class="close" onclick="hideContent('impresszum')">×</span>
+<h2>Impresszum</h2>
+<div class="info-card">
+<h3><i class="fas fa-info-circle"></i> Szolgáltató adatai</h3>
+<p><strong>Név:</strong> Horváth Gonna Solve It Kft.</p>
+<p><strong>Székhely:</strong> 8230 Balatonfüred, Krúdy Gyula sor 4/B.</p>
+<p><strong>Cégjegyzékszám:</strong> 19‑09‑523953</p>
+<p><strong>Adószám:</strong> 32330430‑1‑19</p>
+<p><strong>E‑mail:</strong> kapcsolat@erthetopenzugy.hu</p>
+<p><strong>Telefon:</strong> +36 20 296 7292</p>
+</div>
+<div class="info-card">
+<h3><i class="fas fa-server"></i> Tárhelyszolgáltató adatai</h3>
+<p><strong>Név:</strong> Sybell Informatika Kft.</p>
+<p><strong>Cím:</strong> 1158 Budapest, Késmárk u. 7/B 2. em. 206.</p>
+<p><strong>Telefon:</strong> +36 1 707 67 27</p>
+<p><strong>E‑mail:</strong> info@sybell.hu</p>
+<p><strong>Web:</strong> www.sybell.hu</p>
+</div>
+</div>
+</div>
+<!-- Cookie beállítási panel -->
+<div class="cookie-widget" id="cookieWidget">
+<div class="widget-header">
+<h3>Cookie beállítások</h3>
+<button class="close-widget">×</button>
+</div>
+<div class="ai-recommendation">
+      Ez a weboldal cookie‑kat használ. Kérlek, válaszd ki, milyen típusú cookie‑kat engedélyezel.
+    </div>
+<div class="category-toggle">
+<div class="toggle-item">
+<span>Analitikai cookie (Google Analytics)</span>
+<label class="switch">
+<input id="analyticsToggle" type="checkbox">
+<span class="slider"></span>
+</input></label>
+</div>
+</div>
+<div class="widget-actions">
+<button class="accept-all">Összes elfogadása</button>
+<button class="save-settings">Beállítások mentése</button>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  (function(){
+    let amortizationRows = []; // PDF-hez
+    let chartInstance = null;
+    let year1Chart = null;
+
+    // Grafikon adatok globális tárolása. A sötét/világos téma váltáskor
+    // ezek segítségével tudjuk újra rajzolni a grafikonokat az új színek szerint.
+    let chartLabels = [];
+    let chartCapital = [];
+    let chartInterest = [];
+    let firstYearPrincipal = 0;
+    let firstYearInterest = 0;
+
+    const HUF = new Intl.NumberFormat('hu-HU');
+    const parseHuf = v => parseFloat((v||'').toString().replace(/[^\d]/g,''))||0;
+    const fmt = v => HUF.format(Math.round(v));
+    const clamp = (x,min,max)=>Math.max(min,Math.min(max,x));
+
+    // Segédfüggvény: hex színt átalakít rgba formátumúvá megadott alfa értékkel.
+    function hexToRGBA(hex, alpha) {
+      let h = (hex || '').toString().replace('#','');
+      if (h.length === 3) {
+        h = h.split('').map(c => c + c).join('');
+      }
+      const r = parseInt(h.substring(0,2), 16);
+      const g = parseInt(h.substring(2,4), 16);
+      const b = parseInt(h.substring(4,6), 16);
+      return `rgba(${r},${g},${b},${alpha})`;
+    }
+
+    // A Chart.js színek frissítése aktuális témaszínek alapján. Meghívható téma-váltás után.
+    function updateChartColors(){
+      try {
+        const styles = getComputedStyle(document.documentElement);
+        const textColor = styles.getPropertyValue('--text-color').trim() || '#003366';
+        // Globális alapértelmezett szín a Chart.js-hez (tengely, címke stb.)
+        if (typeof Chart !== 'undefined' && Chart.defaults) {
+          Chart.defaults.color = textColor;
+        }
+        // Ha már léteznek grafikonok, frissítjük azok színeit és újrarajzoljuk őket
+        if (chartInstance) {
+          if (chartInstance.options.scales) {
+            if (chartInstance.options.scales.x && chartInstance.options.scales.x.ticks) {
+              chartInstance.options.scales.x.ticks.color = textColor;
+            }
+            if (chartInstance.options.scales.y && chartInstance.options.scales.y.ticks) {
+              chartInstance.options.scales.y.ticks.color = textColor;
+            }
+          }
+          if (chartInstance.options.plugins && chartInstance.options.plugins.legend && chartInstance.options.plugins.legend.labels) {
+            chartInstance.options.plugins.legend.labels.color = textColor;
+          }
+          chartInstance.update();
+        }
+        if (year1Chart) {
+          if (year1Chart.options.plugins && year1Chart.options.plugins.legend && year1Chart.options.plugins.legend.labels) {
+            year1Chart.options.plugins.legend.labels.color = textColor;
+          }
+          year1Chart.update();
+        }
+      } catch (e) {
+        console && console.warn && console.warn('Chart szín frissítési hiba:', e);
+      }
+    }
+
+    function note(msg){
+      const warningsBox = document.getElementById('warnings');
+      const div = document.createElement('div');
+      div.className = 'warn';
+      div.textContent = msg;
+      warningsBox.innerHTML = '';
+      warningsBox.appendChild(div);
+      setTimeout(()=>{ if(warningsBox.contains(div)) warningsBox.removeChild(div); }, 5000);
+    }
+
+    function safeStartDate(){
+      const raw = document.getElementById('startDate').value;
+      let dt = null;
+      if(raw){
+        const parts = raw.split('-');
+        if(parts.length===3){
+          const y=+parts[0], m=(+parts[1])-1, d=+parts[2];
+          dt = new Date(y, m, d);
+        }else{
+          const t = Date.parse(raw);
+          if(!Number.isNaN(t)) dt = new Date(t);
+        }
+      }
+      if(!dt || Number.isNaN(dt.getTime())){
+        const today = new Date();
+        note('A kezdődátum hiányzott vagy hibás volt, a mai nappal számoltam.');
+        return new Date(today.getFullYear(), today.getMonth(), today.getDate());
+      }
+      return dt;
+    }
+
+    // formázás az összegmezőn
+    (function(){
+      const el = document.getElementById('amount');
+      el.addEventListener('input',()=>{
+        const raw = el.value.replace(/[^\d]/g,'');
+        el.value = raw ? HUF.format(raw) : '';
+      });
+    })();
+
+    // kamat csúszka / input szinkron
+    const rateInput = document.getElementById('rate');
+    const rateSlider = document.getElementById('rateSlider');
+    const rateLabel = document.getElementById('rateLabel');
+    function syncRate(val){ const v=+val; rateInput.value = v.toFixed(2); rateSlider.value = v; rateLabel.textContent = v.toFixed(2).replace('.',',')+'%'; }
+    rateInput.addEventListener('input',()=>{ const v=parseFloat(rateInput.value)||0; syncRate(clamp(v,0.5,25)); compareScenarios(); });
+    rateSlider.addEventListener('input',()=>{ syncRate(rateSlider.value); compareScenarios(); });
+    syncRate(6);
+
+function renderMainChart(labels, capital, interest){
+      try{
+        const ctx = document.getElementById("loanChart").getContext("2d");
+        if (!ctx) return;
+        // jelenlegi téma szerinti színek beolvasása
+        const styles = getComputedStyle(document.documentElement);
+        const accent = styles.getPropertyValue('--accent-color').trim() || '#1c2c4c';
+        const textColor = styles.getPropertyValue('--text-color').trim() || '#003366';
+        const red = '#cc0000';
+        const principalBorder = accent;
+        const principalBg = hexToRGBA(accent, 0.15);
+        const interestBorder = red;
+        const interestBg = 'rgba(204,0,0,0.15)';
+        if (chartInstance) chartInstance.destroy();
+        chartInstance = new Chart(ctx, {
+          type: "line",
+          data: {
+            labels,
+            datasets: [
+              { label: "Tőkerész", data: capital, borderColor: principalBorder, backgroundColor: principalBg, tension: 0.3 },
+              { label: "Kamatrész", data: interest, borderColor: interestBorder, backgroundColor: interestBg, tension: 0.3 }
+            ]
+          },
+          options: {
+            maintainAspectRatio:false,
+            responsive: true,
+            plugins: {
+              legend: {
+                position: "top",
+                labels: {
+                  color: textColor
+                }
+              }
+            },
+            interaction:{ mode:'index', intersect:false },
+            scales: {
+              x: {
+                ticks: { color: textColor },
+                grid: { color: hexToRGBA(accent, 0.2) }
+              },
+              y: {
+                ticks: {
+                  color: textColor,
+                  callback: value => new Intl.NumberFormat('hu-HU').format(value) + " Ft"
+                },
+                grid: { color: hexToRGBA(accent, 0.2) }
+              }
+            }
+          }
+        });
+      }catch(e){
+        console && console.warn && console.warn('Chart render hiba:', e);
+      }
+    }
+
+function renderYear1Chart(p,i){
+      try{
+        p = Number.isFinite(p) ? Math.max(0, p) : 0;
+        i = Number.isFinite(i) ? Math.max(0, i) : 0;
+        const total = p + i;
+        const noteEl = document.getElementById('firstYearNote');
+        const canvas = document.getElementById('year1Chart');
+        if(!canvas){ return; }
+        const ctx = canvas.getContext && canvas.getContext('2d') ? canvas.getContext('2d') : null;
+        if(!ctx || typeof Chart === 'undefined'){
+          if(noteEl) noteEl.textContent = 'A diagram jelenleg nem rajzolható (hiányzó támogatás).';
+          return;
+        }
+        if(total <= 0){
+          if(year1Chart){ year1Chart.destroy(); year1Chart = null; }
+          if(noteEl) noteEl.textContent = 'Nincs megjeleníthető adat az első évre. Ellenőrizd a kezdődátumot és a futamidőt.';
+          return;
+        }
+        canvas.height = 180;
+        // téma szerinti színek
+        const styles = getComputedStyle(document.documentElement);
+        const accent = styles.getPropertyValue('--accent-color').trim() || '#1c2c4c';
+        const red = '#cc0000';
+        const textColor = styles.getPropertyValue('--text-color').trim() || '#003366';
+        if(year1Chart){ year1Chart.destroy(); }
+        year1Chart = new Chart(ctx, {
+          type:'doughnut',
+          data:{ labels:['Tőkerész (1. év)','Kamatrész (1. év)'], datasets:[{ data:[p,i], backgroundColor:[hexToRGBA(accent, 0.8), 'rgba(204,0,0,0.8)'] }] },
+          options:{ 
+            responsive:true, 
+            maintainAspectRatio:false, 
+            plugins:{ legend:{position:'bottom', labels:{ color: textColor } } } 
+          }
+        });
+        if(noteEl) noteEl.textContent = 'Az első évben a törlesztések kb. '+(i/total*100).toFixed(0)+'% -a kamat, '+(p/total*100).toFixed(0)+'% -a tőke.';
+      }catch(e){
+        console && console.warn && console.warn('Year1 chart hiba:', e);
+      }
+    }
+
+    function calculate() {
+      const startDate = safeStartDate();
+      const loanAmount = parseHuf(document.getElementById("amount").value);
+      const interestRate = (parseFloat(document.getElementById("rate").value)||0) / 100;
+      const loanTermYears = parseInt(document.getElementById("term").value);
+      const loanTermMonths = loanTermYears * 12;
+
+      if (!(loanAmount>0 && interestRate>0 && loanTermYears>0)) {
+        note("Kérlek, tölts ki minden mezőt: összeg, kamat, futamidő.");
+        return;
+      }
+
+      const monthlyRate = interestRate / 12;
+      const annuity = monthlyRate>0 ? loanAmount * monthlyRate / (1 - Math.pow(1 + monthlyRate, -loanTermMonths)) : loanAmount/loanTermMonths;
+
+      let remainingCapital = loanAmount;
+      const formatter = new Intl.NumberFormat("hu-HU");
+      amortizationRows = [];
+
+      // Új CSS osztály hozzáadása a táblához ('am-table'), hogy sötét módban könnyebben lehessen formázni
+      let amortization = "<table class=\"am-table\"><thead><tr><th>Hónap</th><th>Dátum</th><th>Törlesztő</th><th>Kamat</th><th>Tőke</th><th>Hátralévő tőke</th></tr></thead><tbody>";
+
+      let currentDate = new Date(startDate.getFullYear(), startDate.getMonth(), 1);
+      const today = new Date();
+      const monthsPassed = Math.max(0, (today.getFullYear() - startDate.getFullYear()) * 12 + (today.getMonth() - startDate.getMonth()));
+      let currentOutstanding = loanAmount;
+
+      // A grafikonhoz használt tömböket globálisan tároljuk, hogy újrarendereléskor is elérhetőek legyenek
+      chartLabels = [];
+      chartCapital = [];
+      chartInterest = [];
+
+      let totalInterest = 0;
+      firstYearPrincipal = 0;
+      firstYearInterest = 0;
+      let switchMonth = null;
+
+      for (let i = 1; i <= loanTermMonths; i++) {
+        const interestPortion = remainingCapital * monthlyRate;
+        let principalPortion = annuity - interestPortion;
+        if(principalPortion < 0) principalPortion = 0;
+        if(principalPortion > remainingCapital) principalPortion = remainingCapital;
+        remainingCapital -= principalPortion;
+        if (remainingCapital < 0) remainingCapital = 0;
+
+        totalInterest += interestPortion;
+
+        const formattedDate = currentDate.toLocaleDateString("hu-HU", { year: 'numeric', month: '2-digit' });
+
+        chartLabels.push(formattedDate);
+        chartCapital.push(principalPortion);
+        chartInterest.push(interestPortion);
+
+        amortizationRows.push([
+          i.toString(),
+          formattedDate,
+          formatter.format(Math.round(annuity)),
+          formatter.format(Math.round(interestPortion)),
+          formatter.format(Math.round(principalPortion)),
+          formatter.format(Math.max(Math.round(remainingCapital), 0))
+        ]);
+        amortization += "<tr><td>"+i+"</td><td>"+formattedDate+"</td>" +
+  "<td>"+formatter.format(Math.round(annuity))+" Ft</td>" +
+  "<td>"+formatter.format(Math.round(interestPortion))+" Ft</td>" +
+  "<td>"+formatter.format(Math.round(principalPortion))+" Ft</td>" +
+  "<td>"+formatter.format(Math.max(Math.round(remainingCapital), 0))+" Ft</td></tr>";
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        if (i === monthsPassed) currentOutstanding = Math.max(remainingCapital, 0);
+
+        if(i<=12){ firstYearInterest += interestPortion; firstYearPrincipal += principalPortion; }
+        if(switchMonth===null && principalPortion > interestPortion){ switchMonth = i; }
+
+        if(remainingCapital<=0){ break; }
+      }
+
+      amortization += "</tbody></table>";
+      document.getElementById("amortizationTable").innerHTML = amortization;
+      document.getElementById("downloadPDF").style.display = "inline-block";
+
+      // KPI-k
+      const paidMonths = chartLabels.length;
+      const totalPaid = annuity * paidMonths;
+      document.getElementById('kpiPayment').textContent = formatter.format(Math.round(annuity)) + ' Ft';
+      document.getElementById('kpiOutstanding').textContent = formatter.format(Math.round(currentOutstanding)) + ' Ft';
+      document.getElementById('kpiTotalInterest').textContent = formatter.format(Math.round(totalInterest)) + ' Ft';
+      document.getElementById('kpiTotalPaid').textContent = formatter.format(Math.round(totalPaid)) + ' Ft';
+      let switchText = '—';
+      if(switchMonth){
+        const swDate = new Date(startDate.getFullYear(), startDate.getMonth() + (switchMonth-1), 1);
+        const swLabel = swDate.toLocaleDateString('hu-HU', { year:'numeric', month:'long' });
+        switchText = swLabel + ' ('+switchMonth+'. hónap)';
+      }
+      document.getElementById('kpiSwitch').textContent = switchText;
+      fitKpiValues();
+
+      renderMainChart(chartLabels, chartCapital, chartInterest);
+      renderYear1Chart(firstYearPrincipal, firstYearInterest);
+    }
+
+    function fitKpiValues(){
+      const els = document.querySelectorAll('#kalkulator .kpi .val');
+      els.forEach(el => {
+        const maxRem = parseFloat(getComputedStyle(el).getPropertyValue('--kpi-max')) || 1.6;
+        const minRem = 0.9;
+        el.style.fontSize = (maxRem) + 'rem';
+        el.style.whiteSpace = 'nowrap';
+        let fs = maxRem;
+        let safety = 40;
+        while (el.scrollWidth > el.clientWidth && fs > minRem && safety-- > 0){
+          fs -= 0.05;
+          el.style.fontSize = fs + 'rem';
+        }
+        if (el.scrollWidth > el.clientWidth){
+          el.style.whiteSpace = 'normal';
+        } else {
+          el.style.whiteSpace = 'nowrap';
+        }
+      });
+    }
+    window.addEventListener('resize', () => { clearTimeout(window.__kpiFitT); window.__kpiFitT = setTimeout(fitKpiValues, 100); });
+
+    // --- Lazy load: külső pdfExport.js-re bízzuk a PDF generálást ---
+    document.getElementById("downloadPDF").addEventListener("click", () => {
+      if (!window.__pdfExportLoaded) {
+        const s = document.createElement('script');
+        s.src = './pdfExport.js';
+        s.onload = () => {
+          window.__pdfExportLoaded = true;
+          if (typeof window.generatePDF === 'function') {
+            window.generatePDF(amortizationRows);
+          } else {
+            alert("A PDF export modul betöltődött, de a generatePDF() nem található.");
+          }
+        };
+        s.onerror = () => {
+          alert("Nem sikerült betölteni a PDF export modult.");
+        };
+        document.body.appendChild(s);
+      } else {
+        window.generatePDF(amortizationRows);
+      }
+    });
+
+    // Delta kezelők és szcenáriók
+    const deltaInput = document.getElementById('deltaInput');
+    const deltaSlider = document.getElementById('deltaSlider');
+    function syncDelta(val){
+      const v = Math.max(0, Math.min(10, +val || 0));
+      deltaInput.value = v.toFixed(1);
+      deltaSlider.value = v.toFixed(1);
+    }
+    function compareScenarios(){
+      const loanAmount = parseHuf(document.getElementById("amount").value);
+      const years = parseInt(document.getElementById("term").value);
+      const months = years*12;
+      const base = parseFloat(document.getElementById('rate').value||'0');
+      const d = parseFloat(deltaInput.value||'0');
+      if(!(loanAmount>0 && years>0 && base>0)){ return; }
+      const aAnnual = Math.max(0.5, Math.min(25, base - d));
+      const bAnnual = Math.max(0.5, Math.min(25, base + d));
+      const a = aAnnual/100/12;
+      const b = bAnnual/100/12;
+      const ann = r=> r>0 ? loanAmount*r/(1-Math.pow(1+r,-months)) : loanAmount/months;
+      const A = ann(a), B = ann(b);
+      const totalA = A*months, totalB=B*months;
+      const baseMonthly = (base/100)/12;
+      const Base = ann(baseMonthly);
+      const totalBase = Base * months;
+      document.getElementById('scenarioResults').innerHTML =
+        '<div class="kpi" style="grid-template-columns: repeat(3, minmax(0,1fr));">'
+        +'<div class="item"><div class="muted">Eredeti kamat ('+base.toFixed(2)+'%)</div><div class="val">'+HUF.format(Math.round(Base))+' Ft</div><div class="muted">Teljes visszafizetés: '+HUF.format(Math.round(totalBase))+' Ft</div></div>'
+        +'<div class="item"><div class="muted">Kedvezőbb kamat ('+aAnnual.toFixed(2)+'%)</div><div class="val">'+HUF.format(Math.round(A))+' Ft</div><div class="muted">Teljes visszafizetés: '+HUF.format(Math.round(totalA))+' Ft</div></div>'
+        +'<div class="item"><div class="muted">Drágább kamat ('+bAnnual.toFixed(2)+'%)</div><div class="val">'+HUF.format(Math.round(B))+' Ft</div><div class="muted">Teljes visszafizetés: '+HUF.format(Math.round(totalB))+' Ft</div></div>'
+        +'</div>';
+    }
+    deltaInput.addEventListener('input', ()=>{ syncDelta(deltaInput.value); compareScenarios(); });
+    deltaSlider.addEventListener('input', ()=>{ syncDelta(deltaSlider.value); compareScenarios(); });
+    syncDelta(1.0);
+
+    // Események
+    document.getElementById('calcBtn').addEventListener('click', calculate);
+
+    // Demó alapértékek és AUTO-SZÁMOLÁS betöltéskor
+    (function demo(){
+      const now = new Date();
+      const yyyy = now.getFullYear();
+      const mm = String(now.getMonth()+1).padStart(2,'0');
+      const dd = '01';
+      document.getElementById('startDate').value = yyyy+'-'+mm+'-'+dd;
+      document.getElementById('amount').value = HUF.format(10000000);
+      document.getElementById('rate').value = '6.00'; syncRate(6);
+      document.getElementById('term').value = 20;
+      setTimeout(()=>{ calculate(); fitKpiValues(); compareScenarios(); }, 0);
+    })();
+
+    // A témaváltó (sötét/világos mód) eseménykezelése: frissítjük a diagramok színeit és újrarajzoljuk őket
+    document.addEventListener('DOMContentLoaded', () => {
+      // Betöltés után állítsuk be a Chart.js alapértelmezett színeit a jelenlegi téma szerint
+      updateChartColors();
+      const themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+          // Kis késleltetés, hogy a body sötét mód osztály frissüljön
+          setTimeout(() => {
+            updateChartColors();
+            // ha már vannak kiszámolt adatok, újra rendereljük a grafikonokat az új színek szerint
+            if (chartLabels && chartLabels.length) {
+              renderMainChart(chartLabels, chartCapital, chartInterest);
+            }
+            if (typeof firstYearPrincipal !== 'undefined' && typeof firstYearInterest !== 'undefined') {
+              renderYear1Chart(firstYearPrincipal, firstYearInterest);
+            }
+          }, 50);
+        });
+      }
+    });
+
+  })();
+  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script defer="" src="./scripts.js"></script>
+<script defer="" src="./cookies.js"></script>
+<button aria-label="Sötét mód váltása" class="theme-toggle" id="themeToggle">🌙</button>
+</body>
+</html>

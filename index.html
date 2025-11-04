@@ -1,351 +1,577 @@
 <!DOCTYPE html>
+
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Érthető Pénzügy</title>
-    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Érthető Pénzügy | Szakértő pénzügyi tanácsadás és konzultáció</title>
+<meta content="Személyre szabott pénzügyi tanácsadás és konzultáció szakértő csapatunktól. Segítünk eligazodni a pénzügyek világában és elérni céljait." name="description"/>
+<meta content="pénzügyi tanácsadás, konzultáció, pénzügyi tervezés, befektetési tanácsadás, biztosítás, hitel, kgfb, casco, bankszámla, megtakarítás, kölcsön" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<meta content="Érthető Pénzügy" name="author"/>
+<link href="https://www.erthetopenzugy.hu" rel="canonical"/>
+<meta content="Érthető Pénzügy | Szakértő pénzügyi tanácsadás" property="og:title"/>
+<meta content="Személyre szabott pénzügyi tanácsadás és konzultáció szakértő csapatunktól. Érje el pénzügyi céljait velünk!" property="og:description"/>
+<meta content="https://www.erthetopenzugy.hu" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="https://www.erthetopenzugy.hu/logo.webp" property="og:image"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Érthető Pénzügy",
+  "url": "https://www.erthetopenzugy.hu",
+  "logo": "https://www.erthetopenzugy.hu/images/favicon.png",
+  "description": "Személyre szabott pénzügyi tanácsadás: biztosítás, hitel, befektetés, nyugdíj, gyermek megtakarítás, kgfb, casco, adókedvezmények, tbsz, vállalkozói biztosítás, vagyon biztosítás.",
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61569678660948",
+    "https://www.instagram.com/ertheto_penzugy"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+36 20 296 7292",
+    "contactType": "customer service",
+    "areaServed": "HU",
+    "availableLanguage": "Hungarian"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Vörösmarty tér 4",
+    "addressLocality": "Veszprém",
+    "postalCode": "8200",
+    "addressCountry": "HU"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Horváth Botond",
+  "jobTitle": "Pénzügyi tanácsadó",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Érthető Pénzügy",
+    "url": "https://www.erthetopenzugy.hu"
+  },
+  "description": "Pénzügyi szakértő, az Érthető Pénzügy alapítója. Több száz család pénzügyi tanácsadója.",
+  "sameAs": []
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Angerman Ferenc",
+  "jobTitle": "Pénzügyi tanácsadó",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Érthető Pénzügy",
+    "url": "https://www.erthetopenzugy.hu"
+  },
+  "description": "2022 óta pénzügyi tanácsadó, aki szenvedéllyel foglalkozik befektetésekkel.",
+  "sameAs": []
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "provider": {
+    "@type": "Organization",
+    "name": "Érthető Pénzügy"
+  },
+  "serviceType": "Pénzügyi tanácsadás",
+  "areaServed": "HU",
+  "description": "Szolgáltatásaink: befektetés, hosszú távú megtakarítás, TBSZ számla, nyugdíjmegtakarítás, önkéntes nyugdíjpénztár, nyugdíjbiztosítás, gyermek megtakarítás, babakötvény, start számla, életbiztosítás, lakásbiztosítás, balesetbiztosítás, kgfb, kötelező biztosítás, casco, gépjármű biztosítás, hitel tanácsadás, lakáshitel, személyi kölcsön, hitelkiváltás, hiteloptimalizálás, bankszámla költségek csökkentése, banki díjak elemzése, állami támogatások, SZJA visszatérítés, adókedvezmények, pénzügyi tervezés."
+}
+</script>
+<link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="images/favicon_32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="images/favicon_32x32.webp" rel="icon" sizes="32x32" type="image/webp"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet">
+<link href="cookies.css" rel="stylesheet"/>
+<link href="carousel.css" rel="stylesheet"/>
+</link></link></link></head>
 <body>
-    <header>
-        <h1 style="color: white; position: relative; z-index: 1;">Érthető Pénzügy</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
-            <li><a href="#tanacsadoink">Tanácsadóink</a></li>
-            <li><a href="#rolunk">Rólunk írták</a></li>
-            <li><a href="#kapcsolat">Kapcsolat</a></li>
-        </ul>
-    </nav>
-    <main>
-        <div class="container" id="szolgaltatasok">
-            <h2>Szolgáltatásaink</h2>
-            <div class="services">
-                <div class="service">
-                    <img src="./images/nyugdij.jpeg" alt="Nyugdíjtanácsadás">
-                    <h3><i class="fas fa-piggy-bank"></i> Nyugdíjtanácsadás</h3>
-                    <p>Segítünk megtervezni nyugdíjas éveit. Szakértőink személyre szabott nyugdíj-előtakarékossági stratégiát dolgoznak ki, hogy biztos alapokon nyugodjon a jövője.</p>
-                </div>
-                <div class="service">
-                    <img src="./images/befektetes.jpg" alt="Befektetési tanácsadás">
-                    <h3><i class="fas fa-chart-line"></i> Befektetési tanácsadás</h3>
-                    <p>Egyénre szabott befektetési stratégiákat dolgozunk ki, figyelembe véve az Ön kockázatvállalási hajlandóságát és pénzügyi céljait.</p>
-                </div>
-                <div class="service">
-                    <img src="./images/ingatlan.jpeg" alt="Ingatlan finanszírozás">
-                    <h3><i class="fas fa-home"></i> Ingatlan finanszírozás</h3>
-                    <p>Segítünk eligazodni az ingatlanvásárlás finanszírozási lehetőségei között. Lakástakarék-pénztár, állami támogatások, kedvezményes hitelek - szakértőink megtalálják az Önnek legmegfelelőbb konstrukciót.</p>
-                </div>
-                <div class="service">
-                    <img src="./images/biztositas.jpeg" alt="Biztosítás optimalizálás">
-                    <h3><i class="fas fa-shield-alt"></i> Biztosítás optimalizálás</h3>
-                    <p>Segítünk megtalálni az Önnek legmegfelelőbb biztosítási csomagokat. Legyen szó KGFB-ről, lakásbiztosításról vagy életbiztosításról, mi megtaláljuk a legjobb ajánlatot.</p>
-                </div>
-                <div class="service">
-                    <img src="./images/ado.png" alt="Adókedvezmények és állami támogatások">
-                    <h3><i class="fas fa-hand-holding-usd"></i> Adókedvezmények és állami támogatások</h3>
-                    <p>Segítünk eligazodni az elérhető állami támogatások és adókedvezmények rendszerében, hogy maximálisan kihasználhassa a jogszabályok által nyújtott lehetőségeket.</p>
-                </div>
-                <div class="service">
-                    <img src="./images/gyermek.jpeg" alt="Gyermek megtakarítások">
-                    <h3><i class="fas fa-child"></i> Gyermek megtakarítások</h3>
-                    <p>Segítünk megtervezni gyermeke jövőjét. Szakértőink személyre szabott megtakarítási programokat dolgoznak ki, hogy gyermeke számára biztos anyagi alapot teremthessen.</p>
-                </div>
-                <div class="service">
-                    <img src="./images/hitel.jpeg" alt="Hitel optimalizálás">
-                    <h3><i class="fas fa-money-bill-wave"></i> Hitel optimalizálás</h3>
-                    <p>Átvizsgáljuk meglévő hiteleit és segítünk megtalálni a legkedvezőbb refinanszírozási lehetőségeket. Szakértőink segítenek a hitelek összevonásában és a törlesztőrészletek optimalizálásában, hogy csökkentsük pénzügyi terheit.</p>
-                </div>
-                <div class="service">
-                    <img src="./images/bankszamla.jpg" alt="Bankszámla költségek áttekintése">
-                    <h3><i class="fas fa-university"></i> Bankszámla költségek áttekintése</h3>
-                    <p>Elemezzük jelenlegi bankszámla költségeit és segítünk megtalálni az Ön számára legkedvezőbb bankszámla konstrukciót. Célunk, hogy minimalizáljuk a banki költségeket és maximalizáljuk a szolgáltatások értékét.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="cta">
-            <div class="cta-content">
-                <h2>Kezdje el most pénzügyei optimalizálását!</h2>
-                <p>Kérjen ingyenes konzultációt szakértőinktől.</p>
-                <a href="#kapcsolat" class="button">Időpontfoglalás</a>
-            </div>
-        </div>
-
-        <div class="container" id="tanacsadoink">
-            <h2>Tanácsadóink</h2>
-            <div class="team-members">
-                <div class="team-member">
-                    <img src="./images/Boti.jpeg" alt="Horváth Botond">
-                    <h3>Horváth Botond</h3>
-                    <p>Pénzügyi szakértő, az Érthető Pénzügy alapítója. Több száz elégedett család pénzügyi tanácsadójaként hisz abban, hogy egy szakértő támogatásával mindenki képes megvalósítani pénzügyi céljait és megteremteni a vágyott anyagi biztonságot.</p>
-                    <p class="motto">"A pénzügyi tervezés elsősorban nem a gazdagság, hanem a biztonság kulcsa"</p>
-                </div>
-                <div class="team-member">
-                    <img src="./images/Feri.jpeg" alt="Angerman Ferenc">
-                    <h3>Angerman Ferenc</h3>
-                    <p>2022 óta erősíti csapatunkat szakértőként. A befektetések világa iránti szenvedélye vezette erre a pályára, ahol felismerte, hogy tudásával valódi értéket teremthet mások számára.</p>
-                    <p class="motto">"Minden sikeres pénzügyi döntés alapja a megfelelő információ."</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="google-reviews" id="rolunk">
-            <h2>Rólunk írták</h2>
-            <script defer async src='https://cdn.trustindex.io/loader.js?7a3f20c391c021224e064dbaca6'></script>
-        </div>
-
-        <div class="container" id="kapcsolat">
-            <h2>Kapcsolat</h2>
-            <div class="contact-form">
-                <form action="https://formspree.io/f/myzzdqpv" method="POST">
-                    <input type="text" name="name" placeholder="Az Ön neve" required>
-                    <input type="email" name="email" placeholder="E-mail címe" required>
-                    <select name="service" required>
-                        <option value="" disabled selected>Válasszon szolgáltatást</option>
-                        <option value="nyugdij">Nyugdíjtanácsadás</option>
-                        <option value="befektetes">Befektetési tanácsadás</option>
-                        <option value="hitel">Ingatlan finanszírozás</option>
-                        <option value="hitel">Biztosítás optimalizálás</option>
-                        <option value="biztositas">Adókedvezmények és állami támogatások</option>
-                        <option value="biztositas">Gyermek megtakarítás</option>
-                        <option value="biztositas">Hitel optimalizálás</option>
-                        <option value="biztositas">Bankszámla költségek áttekintése</option>
-                        <option value="egyeb">Egyéb</option>
-                    </select>
-                    <input type="tel" name="phone" placeholder="Telefonszáma" required pattern="[0-9]{10}" title="Kérjük, adjon meg egy 10 számjegyű telefonszámot.">
-                    <textarea name="message" placeholder="Üzenet" required></textarea>
-                    <input type="checkbox" id="privacy" name="privacy" required>
-                    <label for="privacy">Elolvastam és elfogadom az adatkezelési tájékoztatót</label>
-                    <button type="submit" class="button">Küldés</button>
-                </form>
-            </div>
-        </div>
-   </main>
-    <footer>
-        <div class="social-icons">
-            <a href="https://www.facebook.com/profile.php?id=61569678660948"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/ertheto_penzugy"><i class="fab fa-instagram"></i></a>
-        </div>
-        <p>&copy; 2024 Érthető Pénzügy. Minden jog fenntartva.</p>
-        <p>E-mail: kapcsolat@erthetopenzugy.hu | Tel: +36202967292</p>
-        <p>Cím: 8200, Veszprém, Vörösmarty tér 4</p>
-        <div class="legal-links">
-            <a href="#" onclick="showContent('adatkezeles'); return false;">Adatkezelési tájékoztató</a> |
-            <a href="#" onclick="showContent('impresszum'); return false;">Impresszum</a>
-        </div>
-    </footer>
-    <div class="scroll-top">
-        <i class="fas fa-arrow-up"></i>
+<header>
+<picture>
+<source media="(max-width: 600px)" srcset="images/header_background-400.webp"/>
+<source media="(max-width: 1024px)" srcset="images/header_background-800.webp"/>
+<!-- Use lazy loading on the hero image to improve page speed and set a descriptive alt text. -->
+<img alt="Érthető Pénzügy fejléc háttér" loading="lazy" src="images/header_background-1200.webp"/>
+</picture>
+<div class="header-overlay"></div>
+<h1 class="site-title">Érthető Pénzügy</h1>
+<button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+</header>
+<nav class="compact-nav" id="mobileNav">
+<ul>
+<li><a href="#start" onclick="toggleMobileMenu()">Bemutatkozás</a></li>
+<li><a href="#szolgaltatasok" onclick="toggleMobileMenu()">Szolgáltatások</a></li>
+<li><a href="#tanacsadoink" onclick="toggleMobileMenu()">Tanácsadóink</a></li>
+<li><a href="#rolunk" onclick="toggleMobileMenu()">Rólunk írták</a></li>
+<li><a href="#kapcsolat" onclick="toggleMobileMenu()">Kapcsolat</a></li>
+<li><a href="#karrier" onclick="toggleMobileMenu()">Karrier</a></li>
+<!-- Új menüpont a tőketartozás‑kalkulátorhoz -->
+<li><a href="kalkulator.html" onclick="toggleMobileMenu()">Kalkulátor</a></li>
+<li><a href="blog.html" onclick="toggleMobileMenu()">Blog</a></li>
+</ul>
+</nav>
+<main>
+<div class="container" id="start">
+<h2>Bemutatkozás</h2>
+<div class="container" id="bemutatkozas">
+<p>Célunk, hogy segítsünk eligazodni a pénzügyek világában és támogassuk az Ön tudatos pénzügyi döntéseit. Szolgáltatásaink díjmentesek, mert hisszük, hogy a pénzügyi tudás mindenkinek jár.</p>
+<p>Fedezze fel ingyenes szolgáltatásainkat, és forduljon hozzánk bizalommal, ha kérdése van!</p>
+<p><strong>Az Érthető Pénzügy csapata</strong></p>
+</div>
+</div>
+<div class="container" id="szolgaltatasok">
+<h2>Szolgáltatásaink</h2>
+<div class="services">
+<div class="service fade-in">
+<img alt="Nyugdíjtanácsadás" loading="lazy" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" src="./images/nyugdij-800.webp" srcset="./images/nyugdij-400.webp 400w, ./images/nyugdij-800.webp 800w, ./images/nyugdij-1200.webp 1200w">
+<h3><i class="fas fa-piggy-bank"></i> Nyugdíjtanácsadás</h3>
+<p>Segítünk megtervezni nyugdíjas éveit. Szakértőink személyre szabott nyugdíj-előtakarékossági stratégiát dolgoznak ki, hogy biztos alapokon nyugodjon a jövője.</p>
+</img></div>
+<div class="service fade-in">
+<img alt="Befektetési tanácsadás" loading="lazy" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" src="./images/befektetes-800.webp" srcset="./images/befektetes-400.webp 400w, ./images/befektetes-800.webp 800w, ./images/befektetes-1200.webp 1200w"/>
+<h3><i class="fas fa-chart-line"></i> Befektetési tanácsadás</h3>
+<p>Egyénre szabott befektetési stratégiákat dolgozunk ki, figyelembe véve az Ön kockázatvállalási hajlandóságát és pénzügyi céljait.</p>
+</div>
+<div class="service fade-in">
+<img alt="Ingatlan finanszírozás" loading="lazy" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" src="./images/ingatlan-800.webp" srcset="./images/ingatlan-400.webp 400w, ./images/ingatlan-800.webp 800w, ./images/ingatlan-1200.webp 1200w"/>
+<h3><i class="fas fa-home"></i> Ingatlan finanszírozás</h3>
+<p>Segítünk eligazodni az ingatlanvásárlás finanszírozási lehetőségei között. Lakástakarék-pénztár, állami támogatások, kedvezményes hitelek - szakértőink megtalálják az Önnek legmegfelelőbb konstrukciót.</p>
+</div>
+<div class="service fade-in">
+<img alt="Biztosítás optimalizálás" loading="lazy" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" src="./images/biztositas-800.webp" srcset="./images/biztositas-400.webp 400w, ./images/biztositas-800.webp 800w, ./images/biztositas-1200.webp 1200w"/>
+<h3><i class="fas fa-shield-alt"></i> Biztosítás optimalizálás</h3>
+<p>Segítünk megtalálni az Önnek legmegfelelőbb biztosítási csomagokat. Legyen szó KGFB-ről, lakásbiztosításról vagy életbiztosításról, mi megtaláljuk a legjobb ajánlatot.</p>
+</div>
+<div class="service fade-in">
+<img alt="Adókedvezmények és állami támogatások" loading="lazy" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" src="./images/ado-800.webp" srcset="./images/ado-400.webp 400w, ./images/ado-800.webp 800w, ./images/ado-1200.webp 1200w"/>
+<h3><i class="fas fa-hand-holding-usd"></i> Adókedvezmények és állami támogatások</h3>
+<p>Segítünk eligazodni az elérhető állami támogatások és adókedvezmények rendszerében, hogy maximálisan kihasználhassa a jogszabályok által nyújtott lehetőségeket.</p>
+</div>
+<div class="service fade-in">
+<img alt="Gyermek megtakarítások" loading="lazy" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" src="./images/gyermek-800.webp" srcset="./images/gyermek-400.webp 400w, ./images/gyermek-800.webp 800w, ./images/gyermek-1200.webp 1200w"/>
+<h3><i class="fas fa-child"></i> Gyermek megtakarítások</h3>
+<p>Segítünk megtervezni gyermeke jövőjét. Szakértőink személyre szabott megtakarítási programokat dolgoznak ki, hogy gyermeke számára biztos anyagi alapot teremthessen.</p>
+</div>
+<div class="service fade-in">
+<img alt="Hitel optimalizálás" loading="lazy" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" src="./images/hitel-800.webp" srcset="./images/hitel-400.webp 400w, ./images/hitel-800.webp 800w, ./images/hitel-1200.webp 1200w"/>
+<h3><i class="fas fa-money-bill-wave"></i> Hitel optimalizálás</h3>
+<p>Átvizsgáljuk meglévő hiteleit és segítünk megtalálni a legkedvezőbb refinanszírozási lehetőségeket. Szakértőink segítenek a hitelek összevonásában és a törlesztőrészletek optimalizálásában, hogy csökkentsük pénzügyi terheit.</p>
+</div>
+<div class="service fade-in">
+<img alt="Bankszámla költségek áttekintése" loading="lazy" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" src="./images/bankszamla-800.webp" srcset="./images/bankszamla-400.webp 400w, ./images/bankszamla-800.webp 800w, ./images/bankszamla-1200.webp 1200w"/>
+<h3><i class="fas fa-university"></i> Bankszámla költségek áttekintése</h3>
+<p>Elemezzük jelenlegi bankszámla költségeit és segítünk megtalálni az Ön számára legkedvezőbb bankszámla konstrukciót. Célunk, hogy minimalizáljuk a banki költségeket és maximalizáljuk a szolgáltatások értékét.</p>
+</div>
+<!-- Új szolgáltatás: Társasházbiztosítás -->
+<div class="service fade-in">
+<img alt="Társasházbiztosítás" loading="lazy" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" src="./images/tarsashaz-800.webp" srcset="./images/tarsashaz-400.webp 400w, ./images/tarsashaz-800.webp 800w, ./images/tarsashaz-1200.webp 1200w"/>
+<h3><i class="fas fa-building"></i> Társasházbiztosítás</h3>
+<p>Biztonságban tudhatja társasházi otthonát – legyen szó közös terek, épületszerkezetek vagy lakások védelméről. Szakértőink segítenek kiválasztani a legmegfelelőbb biztosítási fedezetet, hogy a váratlan károk ne terheljék a lakóközösséget.</p>
+</div>
+<!-- Új szolgáltatás: Vállalati biztosítás -->
+<div class="service fade-in">
+<img alt="Vállalati biztosítás" loading="lazy" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" src="./images/vallalati2-800.webp" srcset="./images/vallalati2-400.webp 400w, ./images/vallalati2-800.webp 800w, ./images/vallalati2-1200.webp 1200w"/>
+<h3><i class="fas fa-briefcase"></i> Vállalati biztosítás</h3>
+<p>Átfogó biztosítási megoldásaink segítenek megvédeni vállalkozását. Flotta-, vagyon- és felelősségbiztosítási konstrukcióink révén cége teljes körű védelemben részesül, így Ön nyugodtan koncentrálhat a növekedésre.</p>
+</div>
+</div>
+</div>
+<section class="cta">
+<picture>
+<source media="(max-width: 600px)" srcset="images/cta_background-400.webp"/>
+<source media="(max-width: 1024px)" srcset="images/cta_background-800.webp"/>
+<!-- Descriptive alt text and lazy loading for the call-to-action background -->
+<img alt="Pénzügyi optimalizálás háttér" loading="lazy" src="images/cta_background-1200.webp"/>
+</picture>
+<div class="cta-overlay"></div>
+<div class="cta-content">
+<h2>Kezdje el most pénzügyei optimalizálását!</h2>
+<p>Kérjen ingyenes konzultációt szakértőinktől.</p>
+<a class="button" href="#kapcsolat">Időpontfoglalás</a>
+</div>
+</section>
+<div class="container" id="tanacsadoink">
+<h2>Tanácsadóink</h2>
+<div class="team-members">
+<div class="team-member fade-in">
+<img alt="Horváth Botond" loading="lazy" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" src="./images/Boti-800.webp" srcset="./images/Boti-400.webp 400w, ./images/Boti-800.webp 800w, ./images/Boti-1200.webp 1200w">
+<h3>Horváth Botond</h3>
+<p>Pénzügyi szakértő, az Érthető Pénzügy alapítója. Több száz elégedett család pénzügyi tanácsadójaként hisz abban, hogy egy szakértő támogatásával mindenki képes megvalósítani pénzügyi céljait és megteremteni a vágyott anyagi biztonságot.</p>
+<p class="motto">"A pénzügyi tervezés elsősorban nem a gazdagság, hanem a biztonság kulcsa"</p>
+</img></div>
+<div class="team-member fade-in">
+<img alt="Angerman Ferenc" loading="lazy" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" src="./images/Feri-800.webp" srcset="./images/Feri-400.webp 400w, ./images/Feri-800.webp 800w, ./images/Feri-1200.webp 1200w"/>
+<h3>Angerman Ferenc</h3>
+<p>2022 óta erősíti csapatunkat szakértőként. A befektetések világa iránti szenvedélye vezette erre a pályára, ahol felismerte, hogy tudásával valódi értéket teremthet mások számára.</p>
+<p class="motto">"Minden sikeres pénzügyi döntés alapja a megfelelő információ."</p>
+</div>
+</div>
+</div>
+<!-- Social media feed section offering live Facebook and Instagram updates 
+<section class="social-feed fade-in" id="kozossegi">
+  <h2>Kövessen minket a közösségi médiában</h2>
+  <div class="feed-container">
+    <div class="fb-feed">
+      <iframe src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/profile.php?id=61569678660948&tabs=timeline&width=500&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&locale=hu_HU" width="100%" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
     </div>
-    <div class="cookie-notice">
-        <p>Ez a weboldal cookie-kat használ a jobb felhasználói élmény érdekében.</p>
-        <button onclick="acceptCookies()">Elfogadom</button>
+    <div class="insta-feed">
+ <!-- LightWidget WIDGET <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/9e2332693ee65f92b655b6cb19cbed30.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
     </div>
-<div id="adatkezeles" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="hideContent('adatkezeles')">&times;</span>
-    <h2>Adatkezelési tájékoztató</h2>
-    <div class="accordion">
-      <div class="accordion-item" id="adatkezelo">
-        <h3 class="accordion-header">1. Az adatkezelő adatai</h3>
-        <div class="accordion-content">
-          <div class="info-card">
-            <p><i class="fas fa-building"></i> <strong>Név:</strong> Horváth Gonna Solve It Korlátolt Felelősségű Társaság</p>
-            <p><i class="fas fa-map-marker-alt"></i> <strong>Székhely:</strong> 8230 Balatonfüred, Krúdy Gyula sor 4/B.</p>
-            <p><i class="fas fa-file-alt"></i> <strong>Cégjegyzékszám:</strong> 19-09-523953</p>
-            <p><i class="fas fa-id-card"></i> <strong>Adószám:</strong> 32330430-1-19</p>
-            <p><i class="fas fa-envelope"></i> <strong>E-mail:</strong> kapcsolat@erthetopenzugy.hu</p>
-            <p><i class="fas fa-phone"></i> <strong>Telefon:</strong> +36 20 296 7292</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="accordion-item" id="kezelt-adatok">
-        <h3 class="accordion-header">2. A kezelt személyes adatok köre</h3>
-        <div class="accordion-content">
-          <p>Weboldalunk látogatása során a következő személyes adatokat kezeljük:</p>
-          <ul>
-            <li>IP cím</li>
-            <li>A látogatás időpontja</li>
-            <li>A megtekintett oldalak adatai</li>
-            <li>Az Ön által használt böngésző és operációs rendszer típusa</li>
-          </ul>
-          <p>Ingyenes tanácsadásra való jelentkezés esetén az alábbi adatokat gyűjtjük:</p>
-          <ul>
-            <li>Név</li>
-            <li>E-mail cím</li>
-            <li>Telefonszám</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="accordion-item" id="cel-jogalap">
-        <h3 class="accordion-header">3. Az adatkezelés célja és jogalapja</h3>
-        <div class="accordion-content">
-          <p>Adatkezelésünk célja:</p>
-          <ul>
-            <li>A weboldal megfelelő működésének biztosítása</li>
-            <li>A felhasználói élmény javítása</li>
-            <li>Kapcsolattartás az ügyfelekkel</li>
-            <li>Szolgáltatásaink fejlesztése</li>
-            <li>Ingyenes tanácsadás biztosítása és időpontegyeztetés</li>
-          </ul>
-          <p>Az adatkezelés jogalapja:</p>
-          <ul>
-            <li>A weboldal működéséhez szükséges adatok esetében: jogos érdek (GDPR 6. cikk (1) bekezdés f) pont)</li>
-            <li>Az ingyenes tanácsadásra való jelentkezés során megadott adatok esetében: az Ön önkéntes hozzájárulása (GDPR 6. cikk (1) bekezdés a) pont)</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="accordion-item" id="idotartam">
-        <h3 class="accordion-header">4. Az adatkezelés időtartama</h3>
-        <div class="accordion-content">
-          <ul>
-            <li>A látogatással kapcsolatos adatokat 30 napig őrizzük meg.</li>
-            <li>Az ingyenes tanácsadásra való jelentkezés során megadott adatokat a tanácsadás lebonyolítását követő 30 napig, vagy az Ön hozzájárulásának visszavonásáig tároljuk.</li>
-            <li>A kapcsolatfelvétel során megadott egyéb adatokat az ügy lezárását követő 1 évig tároljuk, kivéve, ha jogszabály hosszabb megőrzési időt ír elő.</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="accordion-item" id="jogok">
-        <h3 class="accordion-header">5. Az Ön jogai</h3>
-        <div class="accordion-content">
-          <p>Önnek joga van:</p>
-          <ul>
-            <li>Tájékoztatást kérni az adatkezelésről</li>
-            <li>Hozzáférni a kezelt adataihoz</li>
-            <li>Kérni az adatok helyesbítését vagy törlését</li>
-            <li>Tiltakozni az adatkezelés ellen</li>
-            <li>Adathordozhatósághoz való jogát gyakorolni</li>
-            <li>Visszavonni a hozzájárulását az adatkezeléshez</li>
-          </ul>
-          <p>Az adatai törlését vagy a hozzájárulás visszavonását a kapcsolat@erthetopenzugy.hu e-mail címen kérheti.</p>
-        </div>
-      </div>
-      
-      <div class="accordion-item" id="adatbiztonsag">
-        <h3 class="accordion-header">6. Adatbiztonság</h3>
-        <div class="accordion-content">
-          <p>Az Ön személyes adatainak védelmét a következő intézkedésekkel biztosítjuk:</p>
-          <ul>
-            <li>Titkosított adatátvitel (SSL)</li>
-            <li>Korlátozott hozzáférés az adatokhoz</li>
-            <li>Rendszeres biztonsági mentések</li>
-            <li>Naprakész tűzfal és vírusvédelem</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="accordion-item" id="adattovabbitas">
-        <h3 class="accordion-header">7. Adattovábbítás</h3>
-        <div class="accordion-content">
-          <p>Az Ön által megadott személyes adatokat nem továbbítjuk harmadik félnek, kivéve, ha erre jogszabály kötelez minket.</p>
-        </div>
-      </div>
-      
-      <div class="accordion-item" id="sutik">
-        <h3 class="accordion-header">8. Sütik (cookie-k) kezelése</h3>
-        <div class="accordion-content">
-          <p>Weboldalunk sütiket használ a felhasználói élmény javítása érdekében.</p>
-          <div class="cookie-settings">
-            <h4>Süti beállítások</h4>
-            <label>
-              <input type="checkbox" id="essential-cookies" checked disabled>
+  </div> 
+</section> 
+</div> -->
+<div class="container" id="rolunk">
+<h2>Rólunk írták</h2>
+<div class="reviews-carousel" id="rolunk">
+<div class="carousel-container">
+</div>
+<button class="carousel-button prev">❮</button>
+<button class="carousel-button next">❯</button>
+</div>
+</div>
+<div class="container" id="kapcsolat">
+<h2>Kapcsolat</h2>
+<p>
+<strong>Szeretnéd átláthatóbbá tenni a pénzügyeidet, és magabiztos döntéseket hozni?</strong>
+    Jelentkezz egy <strong>ingyenes konzultációra</strong> – közérthetően átbeszéljük a helyzeted,
+    megmutatjuk a lehetőségeidet, és segítünk elindulni a céljaid felé.
+  </p>
+<p><em>Kötetlen beszélgetés, egyenes válaszok, valódi megoldások.</em></p>
+<div class="form-wrapper centered">
+<a aria-label="Ingyenes konzultációra jelentkezem (új lapon nyílik)" class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSdjv-PcKYr9qT5A1SaLvl51UBgn_eZPruahFK-FiiZifyxfoA/viewform" rel="noopener noreferrer" target="_blank">
+      Ingyenes konzultációra jelentkezem
+    </a>
+<p class="form-note">A gombra kattintva egy rövid űrlapra irányítunk.</p>
+</div>
+</div>
+
+<div class="container" id="karrier">
+<h2>Karrier</h2>
+<p>Csatlakozz az Érthető Pénzügy csapatához!</p>
+<p>
+    Hiszünk abban, hogy a pénzügyek nem kell, hogy bonyolultak legyenek. 
+    Célunk, hogy mindenki megértse, hogyan hozhat jobb döntéseket a saját pénzügyeiben – egyszerűen, érthetően és őszintén.
+  </p>
+<p>
+    Most olyan <strong>lelkes és fejlődni vágyó embereket</strong> keresünk, akik szeretnének részesei lenni ennek a küldetésnek. 
+    Ha érdekel a pénzügyek világa, szeretsz emberekkel foglalkozni, és hiszel abban, hogy a tudás ereje valódi változást hoz, akkor nálunk a helyed!
+  </p>
+<h3>Mit kínálunk?</h3>
+<ul>
+<li>Támogató, összetartó csapatot</li>
+<li>Folyamatos szakmai fejlődést és képzéseket</li>
+<li>Valós karrierlehetőséget a pénzügyi tanácsadás területén</li>
+<li>Rugalmasságot és önállóságot a munkában</li>
+</ul>
+<p><strong>Tedd érthetővé a pénzügyeket velünk – jelentkezz most, és légy része valami értékesnek!</strong></p>
+<div class="form-wrapper centered">
+<a aria-label="Karrier jelentkezés (új lapon nyílik)" class="button" href="https://forms.gle/77FjkmaNJu8YvsmN9" onclick="try{gtag('event','click',{event_category:'CTA',event_label:'Karrier – Jelentkezés'});}catch(e){}" rel="noopener noreferrer" target="_blank">
+      Jelentkezem
+    </a>
+<p class="form-note">A gombra kattintva egy rövid űrlapra irányítunk.</p>
+</div>
+</div>
+</main>
+<footer>
+<div class="social-icons">
+<a href="https://www.facebook.com/profile.php?id=61569678660948"><i class="fab fa-facebook"></i></a>
+<a href="https://www.instagram.com/ertheto_penzugy"><i class="fab fa-instagram"></i></a>
+</div>
+<p>© 2024 Érthető Pénzügy. Minden jog fenntartva.</p>
+<p>E-mail: kapcsolat@erthetopenzugy.hu | Tel: 06202967292</p>
+<p>Cím: 8200, Veszprém, Vörösmarty tér 4</p>
+<div class="legal-links">
+<a href="#">Adatkezelési tájékoztató</a> |
+			<a href="#">Impresszum</a>
+</div>
+</footer>
+<div class="scroll-top">
+<i class="fas fa-chevron-up"></i>
+</div>
+<div class="modal" id="adatkezeles">
+<div class="modal-content">
+<span class="close" onclick="hideContent('adatkezeles')">×</span>
+<h2>Adatkezelési tájékoztató</h2>
+<div class="accordion">
+<div class="accordion-item" id="adatkezelo">
+<h3 class="accordion-header">1. Az adatkezelő adatai</h3>
+<div class="accordion-content">
+<div class="info-card">
+<p><i class="fas fa-building"></i> <strong>Név:</strong> Horváth Gonna Solve It Korlátolt Felelősségű Társaság</p>
+<p><i class="fas fa-map-marker-alt"></i> <strong>Székhely:</strong> 8230 Balatonfüred, Krúdy Gyula sor 4/B.</p>
+<p><i class="fas fa-file-alt"></i> <strong>Cégjegyzékszám:</strong> 19-09-523953</p>
+<p><i class="fas fa-id-card"></i> <strong>Adószám:</strong> 32330430-1-19</p>
+<p><i class="fas fa-envelope"></i> <strong>E-mail:</strong> kapcsolat@erthetopenzugy.hu</p>
+<p><i class="fas fa-phone"></i> <strong>Telefon:</strong> +36 20 296 7292</p>
+</div>
+</div>
+</div>
+<div class="accordion-item" id="kezelt-adatok">
+<h3 class="accordion-header">2. A kezelt személyes adatok köre</h3>
+<div class="accordion-content">
+<p>Weboldalunk látogatása során a következő személyes adatokat kezeljük:</p>
+<ul>
+<li>IP cím</li>
+<li>A látogatás időpontja</li>
+<li>A megtekintett oldalak adatai</li>
+<li>Az Ön által használt böngésző és operációs rendszer típusa</li>
+</ul>
+<p>Ingyenes tanácsadásra való jelentkezés esetén az alábbi adatokat gyűjtjük:</p>
+<ul>
+<li>Név</li>
+<li>E-mail cím</li>
+<li>Telefonszám</li>
+</ul>
+</div>
+</div>
+<div class="accordion-item" id="cel-jogalap">
+<h3 class="accordion-header">3. Az adatkezelés célja és jogalapja</h3>
+<div class="accordion-content">
+<p>Adatkezelésünk célja:</p>
+<ul>
+<li>A weboldal megfelelő működésének biztosítása</li>
+<li>A felhasználói élmény javítása</li>
+<li>Kapcsolattartás az ügyfelekkel</li>
+<li>Szolgáltatásaink fejlesztése</li>
+<li>Ingyenes tanácsadás biztosítása és időpontegyeztetés</li>
+</ul>
+<p>Az adatkezelés jogalapja:</p>
+<ul>
+<li>A weboldal működéséhez szükséges adatok esetében: jogos érdek (GDPR 6. cikk (1) bekezdés f) pont)</li>
+<li>Az ingyenes tanácsadásra való jelentkezés során megadott adatok esetében: az Ön önkéntes hozzájárulása (GDPR 6. cikk (1) bekezdés a) pont)</li>
+</ul>
+</div>
+</div>
+<div class="accordion-item" id="idotartam">
+<h3 class="accordion-header">4. Az adatkezelés időtartama</h3>
+<div class="accordion-content">
+<ul>
+<li>A látogatással kapcsolatos adatokat 30 napig őrizzük meg.</li>
+<li>Az ingyenes tanácsadásra való jelentkezés során megadott adatokat a tanácsadás lebonyolítását követő 30 napig, vagy az Ön hozzájárulásának visszavonásáig tároljuk.</li>
+<li>A kapcsolatfelvétel során megadott egyéb adatokat az ügy lezárását követő 1 évig tároljuk, kivéve, ha jogszabály hosszabb megőrzési időt ír elő.</li>
+</ul>
+</div>
+</div>
+<div class="accordion-item" id="jogok">
+<h3 class="accordion-header">5. Az Ön jogai</h3>
+<div class="accordion-content">
+<p>Önnek joga van:</p>
+<ul>
+<li>Tájékoztatást kérni az adatkezelésről</li>
+<li>Hozzáférni a kezelt adataihoz</li>
+<li>Kérni az adatok helyesbítését vagy törlését</li>
+<li>Tiltakozni az adatkezelés ellen</li>
+<li>Adathordozhatósághoz való jogát gyakorolni</li>
+<li>Visszavonni a hozzájárulását az adatkezeléshez</li>
+</ul>
+<p>Az adatai törlését vagy a hozzájárulás visszavonását a kapcsolat@erthetopenzugy.hu e-mail címen kérheti.</p>
+</div>
+</div>
+<div class="accordion-item" id="adatbiztonsag">
+  <h3 class="accordion-header">6. Adatbiztonság</h3>
+  <div class="accordion-content">
+    <p>Az adatkezelő megfelelő technikai és szervezési intézkedésekkel védi a személyes adatokat
+    a jogosulatlan hozzáférés, megváltoztatás, nyilvánosságra hozatal vagy törlés ellen. 
+    Az adatokat biztonságos szervereken tároljuk, a hozzáférést csak az arra jogosult személyek kapják meg.</p>
+  </div>
+</div>
+
+<div class="accordion-item" id="adatbiztonsag">
+<div class="accordion-item" id="adattovabbitas">
+<h3 class="accordion-header">7. Adattovábbítás</h3>
+<div class="accordion-content">
+<p>Az Ön által megadott személyes adatokat nem továbbítjuk harmadik félnek, kivéve:</p>
+<ul>
+<li>Jogszabályi kötelezettség esetén</li>
+<li>
+        Google Analytics szolgáltatás használata keretében, melynek során az adatok az Egyesült Államokba kerülnek átvitelre.
+        Az adattovábbítás jogalapja az Ön hozzájárulása (GDPR 6. cikk (1) bekezdés a) pont), valamint a Google LLC részvétele az EU–US Data Privacy Framework alapján,
+        amelyet az Európai Bizottság megfelelőségi határozata elismer (GDPR 45. cikk).
+      </li>
+</ul>
+<p>Harmadik országba történő adattovábbítás esetén a GDPR 44-49. cikkeiben foglalt garanciákat alkalmazzuk.</p>
+<p>Felhívjuk figyelmét, hogy a Google Analytics használata kizárólag az Ön előzetes hozzájárulásával történik. 
+Amennyiben a süti beállításoknál nem engedélyezi az analitikai sütiket, a Google Analytics nem kerül aktiválásra, 
+és személyes adatainak továbbítása sem történik meg.</p>
+
+</div>
+</div>
+</div>
+<div class="accordion-item" id="automatalt-dontes">
+<h3 class="accordion-header">8. Automatizált döntéshozatal</h3>
+<div class="accordion-content">
+<p>Weboldalunk nem alkalmaz automatizált döntéshozatali folyamatokat, beleértve a profilalkotást sem.</p>
+</div>
+</div>
+<div class="accordion-item" id="sutik">
+<h3 class="accordion-header">9. Sütik (cookie-k) kezelése</h3>
+<div class="accordion-content">
+<section class="cookie-policy">
+<h3>Cookie Szabályzat</h3>
+<h4>Milyen sütiket használunk?</h4>
+<div class="table-container">
+<table>
+<tr>
+<th>Cookie típus</th>
+<th>Név</th>
+<th>Cél</th>
+<th>Élettartam</th>
+</tr>
+<tr>
+<td data-label="Cookie típus">Szükséges</td>
+<td data-label="Név">session_cookie</td>
+<td data-label="Cél">Munkamenet nyilvántartás</td>
+<td data-label="Élettartam">Munkamenet végéig</td>
+</tr>
+<tr>
+<td data-label="Cookie típus">Analitikai</td>
+<td data-label="Név">_ga</td>
+<td data-label="Cél">Látogatók azonosítása (Google Analytics)</td>
+<td data-label="Élettartam">2 év</td>
+</tr>
+<tr>
+<td data-label="Cookie típus">Analitikai</td>
+<td data-label="Név">_gid</td>
+<td data-label="Cél">Látogatók megkülönböztetése (Google Analytics)</td>
+<td data-label="Élettartam">24 óra</td>
+</tr>
+<tr>
+<td data-label="Cookie típus">Analitikai</td>
+<td data-label="Név">_gat</td>
+<td data-label="Cél">Kérések korlátozása (Google Analytics)</td>
+<td data-label="Élettartam">1 perc</td>
+</tr>
+</table>
+</div>
+<div class="cookie-settings">
+<h4>Süti beállítások</h4>
+<label>
+<input checked="" disabled="" id="essential-cookies" type="checkbox"/>
               Elengedhetetlen sütik
             </label>
-            <label>
-              <input type="checkbox" id="analytics-cookies">
+<label>
+<input id="analytics-cookies" type="checkbox"/>
               Analitikai sütik
             </label>
-            <label>
-              <input type="checkbox" id="marketing-cookies">
-              Marketing sütik
-            </label>
-            <button onclick="saveCookieSettings()">Beállítások mentése</button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="accordion-item" id="panasztetel">
-        <h3 class="accordion-header">9. Panasztételi jog</h3>
-        <div class="accordion-content">
-          <p>Ön jogosult panaszt tenni a felügyeleti hatóságnál, ha úgy érzi, hogy személyes adatainak kezelése nem felel meg a jogszabályi követelményeknek. A felügyeleti hatóság elérhetősége:</p>
-          <div class="info-card">
-            <p><strong>Nemzeti Adatvédelmi és Információszabadság Hatóság</strong></p>
-            <p><i class="fas fa-map-marker-alt"></i> Cím: 1055 Budapest, Falk Miksa utca 9-11.</p>
-            <p><i class="fas fa-envelope"></i> Postacím: 1363 Budapest, Pf.: 9.</p>
-            <p><i class="fas fa-phone"></i> Telefon: +36 1 391 1400</p>
-            <p><i class="fas fa-envelope"></i> E-mail: ugyfelszolgalat@naih.hu</p>
-            <p><i class="fas fa-globe"></i> Weboldal: https://www.naih.hu/</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="accordion-item" id="felulvizsgalat">
-        <h3 class="accordion-header">10. Az adatvédelmi nyilatkozat felülvizsgálata</h3>
-        <div class="accordion-content">
-          <p>Jelen adatvédelmi nyilatkozatot rendszeresen, de legalább évente felülvizsgáljuk és szükség esetén frissítjük.</p>
-        </div>
-      </div>
-      
-      <div class="accordion-item" id="kapcsolat">
-        <h3 class="accordion-header">11. Kapcsolat</h3>
-        <div class="accordion-content">
-          <p>Adatvédelemmel kapcsolatos kérdéseivel forduljon hozzánk bizalommal az alábbi elérhetőségeken:</p>
-          <div class="info-card">
-            <p><i class="fas fa-envelope"></i> E-mail: kapcsolat@erthetopenzugy.hu</p>
-            <p><i class="fas fa-phone"></i> Telefon: +36 20 296 7292</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <p class="last-updated">Utolsó frissítés dátuma: 2025. január 6.</p>
-  </div>
+<button class="button" onclick="saveCookieSettings()">Beállítások mentése</button>
 </div>
-
-<div id="impresszum" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="hideContent('impresszum')">&times;</span>
-    <h2>Impresszum</h2>
-    
-    <div class="accordion">
-      <div class="accordion-item" id="szolgaltato-adatok">
-        <h3 class="accordion-header"><i class="fas fa-info-circle"></i> Szolgáltató adatai</h3>
-        <div class="accordion-content">
-          <div class="info-card">
-            <p><strong>Név:</strong> Horváth Gonna Solve It Korlátolt Felelősségű Társaság</p>
-            <p><strong>Székhely:</strong> 8230 Balatonfüred, Krúdy Gyula sor 4/B.</p>
-            <p><strong>Cégjegyzékszám:</strong> 19-09-523953</p>
-            <p><strong>Adószám:</strong> 32330430-1-19</p>
-            <p><strong>E-mail:</strong> kapcsolat@erthetopenzugy.hu</p>
-            <p><strong>Telefon:</strong> +36 20 296 7292</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="accordion-item" id="tarhely-adatok">
-        <h3 class="accordion-header"><i class="fas fa-server"></i> Tárhelyszolgáltató adatai</h3>
-        <div class="accordion-content">
-          <div class="info-card">
-            <p><strong>Név:</strong> Sybell Informatika Kft.</p>
-            <p><strong>Cím:</strong> 1158 Budapest, Késmárk u. 7/B 2. em. 206.</p>
-            <p><strong>Telefon:</strong> +36 1 707 67 27</p>
-            <p><strong>E-mail:</strong> info@sybell.hu</p>
-            <p><strong>Web:</strong> www.sybell.hu</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+</section>
 </div>
-  <script src="script.js"></script>
-  </body>
+</div>
+<div class="accordion-item" id="panasztetel">
+<h3 class="accordion-header">10. Panasztételi jog</h3>
+<div class="accordion-content">
+<p>Ön jogosult panaszt tenni a felügyeleti hatóságnál, ha úgy érzi, hogy személyes adatainak kezelése nem felel meg a jogszabályi követelményeknek. A felügyeleti hatóság elérhetősége:</p>
+<div class="info-card">
+<p><strong>Nemzeti Adatvédelmi és Információszabadság Hatóság</strong></p>
+<p><i class="fas fa-map-marker-alt"></i> Cím: 1055 Budapest, Falk Miksa utca 9-11.</p>
+<p><i class="fas fa-envelope"></i> Postacím: 1363 Budapest, Pf.: 9.</p>
+<p><i class="fas fa-phone"></i> Telefon: +36 1 391 1400</p>
+<p><i class="fas fa-envelope"></i> E-mail: ugyfelszolgalat@naih.hu</p>
+<p><i class="fas fa-globe"></i> Weboldal: https://www.naih.hu/</p>
+</div>
+</div>
+</div>
+<div class="accordion-item" id="felulvizsgalat">
+<h3 class="accordion-header">11. Az adatvédelmi nyilatkozat felülvizsgálata</h3>
+<div class="accordion-content">
+<p>Jelen adatvédelmi nyilatkozatot rendszeresen, de legalább évente felülvizsgáljuk és szükség esetén frissítjük.</p>
+</div>
+</div>
+<div class="accordion-item" id="kapcsolat">
+<h3 class="accordion-header">12. Kapcsolat</h3>
+<div class="accordion-content">
+<p>Adatvédelemmel kapcsolatos kérdéseivel forduljon hozzánk bizalommal az alábbi elérhetőségeken:</p>
+<div class="info-card">
+<p><i class="fas fa-envelope"></i> E-mail: kapcsolat@erthetopenzugy.hu</p>
+<p><i class="fas fa-phone"></i> Telefon: 06 20 296 7292</p>
+</div>
+</div>
+</div>
+<div class="accordion-item" id="kulso-szolgaltatok">
+<h3 class="accordion-header">13. Külső szolgáltatók igénybevétele (Google Forms, Gmail)</h3>
+<div class="accordion-content">
+<p>
+      A kapcsolatfelvételi űrlap kitöltése során megadott személyes adatokat a Google LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA)
+      szolgáltatásai – Google Forms, Google Sheets és Gmail – dolgozzák fel technikai eszközeikkel.
+    </p>
+<p>
+      Az űrlap és annak válaszai a Google európai adatközpontjaiban kerülnek rögzítésre. Az automatikus értesítés a Gmail szolgáltatáson keresztül kerül továbbításra
+      az adatkezelő emailcímére (kapcsolat@erthetopenzugy.hu).
+    </p>
+<p>
+      A Google LLC az Európai Unió és az Egyesült Államok közötti Adatvédelmi Keretrendszer (EU–US Data Privacy Framework) alapján megfelelőségi nyilatkozattal rendelkezik,
+      így az adattovábbítás jogalapja a GDPR 45. cikk szerinti megfelelőségi határozat.
+    </p>
+<p>
+      Nem történik automatizált döntéshozatal vagy profilalkotás.
+    </p>
+</div>
+</div>
+<p class="last-updated">Utolsó frissítés dátuma: 2025.04.30.</p>
+</div>
+</div>
+</div>
+<div class="modal" id="impresszum">
+<div class="modal-content">
+<span class="close" onclick="hideContent('impresszum')">×</span>
+<h2>Impresszum</h2>
+<div class="info-card">
+<h3><i class="fas fa-info-circle"></i> Szolgáltató adatai</h3>
+<p><strong>Név:</strong> Horváth Gonna Solve It Korlátolt Felelősségű Társaság</p>
+<p><strong>Székhely:</strong> 8230 Balatonfüred, Krúdy Gyula sor 4/B.</p>
+<p><strong>Cégjegyzékszám:</strong> 19-09-523953</p>
+<p><strong>Adószám:</strong> 32330430-1-19</p>
+<p><strong>E-mail:</strong> kapcsolat@erthetopenzugy.hu</p>
+<p><strong>Telefon:</strong> +36 20 296 7292</p>
+</div>
+<div class="info-card">
+<h3><i class="fas fa-server"></i> Tárhelyszolgáltató adatai</h3>
+<p><strong>Név:</strong> Sybell Informatika Kft.</p>
+<p><strong>Cím:</strong> 1158 Budapest, Késmárk u. 7/B 2. em. 206.</p>
+<p><strong>Telefon:</strong> +36 1 707 67 27</p>
+<p><strong>E-mail:</strong> info@sybell.hu</p>
+<p><strong>Web:</strong> www.sybell.hu</p>
+</div>
+</div>
+</div>
+<div class="cookie-widget" id="cookieWidget">
+<div class="widget-header">
+<h3>Cookie beállítások</h3>
+<button class="close-widget">×</button>
+</div>
+<div class="ai-recommendation">
+      Ez a weboldal cookie-kat használ. Kérlek, válaszd ki, milyen típusú cookie-kat engedélyezel.
+    </div>
+<div class="category-toggle">
+<div class="toggle-item">
+<span>Analitikai cookie (Google Analytics)</span>
+<label class="switch">
+<input id="analyticsToggle" type="checkbox"/>
+<span class="slider"></span>
+</label>
+</div>
+</div>
+<div class="widget-actions">
+<button class="accept-all">Összes elfogadása</button>
+<button class="save-settings">Beállítások mentése</button>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script defer="" src="./scripts.js"></script>
+<script defer="" src="./carousel.js"></script>
+<script defer="" src="./cookies.js"></script>
+<!-- Theme toggle button for switching between light and dark modes -->
+<button aria-label="Sötét mód váltása" class="theme-toggle" id="themeToggle">🌙</button>
+</body>
 </html>

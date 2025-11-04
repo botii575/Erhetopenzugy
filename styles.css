@@ -1,97 +1,177 @@
- /* Alap stílusok */
-        html {
+/* Alap stílusok */
+        html{
             scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f8ff;
-            color: #003366;
-        }
+        }/*
+ * Alapszínek és sötét mód támogatása
+ * A legtöbb elem színét CSS‑változókkal határozzuk meg. Ezeket a változókat
+ * a :root szinten definiáljuk, így világos és sötét mód között könnyen
+ * válthatunk. A dark‑mode osztály a body‑n módosítja ezeket a változókat.
+ */
+:root{
+    --bg-color: #f0f8ff;
+    --text-color: #003366;
+    --card-bg: #ffffff;
+    --nav-bg: rgba(0, 51, 102, 0.95);
+    --accent-color: #003366;
+    --button-bg: #0066cc;
+    --button-text: #ffffff;
+}body{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}/* Világos mód: ikonok legyenek sötétek */
+body:not(.dark-mode) .service i, body:not(.dark-mode) .info-card i, body:not(.dark-mode) .accordion-content i{
+    color: var(--text-color);
+}body:not(.dark-mode) footer{
+    color: white;
+}body:not(.dark-mode) footer .legal-links a{
+    color: white !important;
+}body:not(.dark-mode) footer .legal-links a:hover{
+    color: #cccccc !important;
+}body.dark-mode{
+    /* Sötét mód változók */
+    --bg-color: #0a192f;
+    --text-color: #f0f8ff;
+    --card-bg: #112240;
+    --nav-bg: rgba(1, 22, 39, 0.95);
+    --accent-color: #8892b0;
+    --button-bg: #028090;
+    --button-text: #ffffff;
+}header{
+  position: relative;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}header picture, header picture img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}header .header-overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0,51,102,0.9), rgba(0,102,204,0.8));
+  z-index: 1;
+}header h1, header .hamburger, header .site-title{
+  position: relative;
+  z-index: 2;
+  color: white;
+  /* === SEO Hotfix: keep layout stable with .site-title and H1 article titles === */
 
-        /* Header stílusok */
-        header {
-            background-image: url(images/header_background.jpeg);
-            background-size: cover;
-            background-position: center;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
+/* 1) Header brand shows regardless of tag */
+header h1, header .site-title, /* === SEO Hotfix: keep layout stable with .site-title and H1 article titles === */
 
-        header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0,51,102,0.9) 0%, rgba(0,102,204,0.8) 100%);
-        }
+/* 1) Header brand shows regardless of tag */
+header .site-title{
+  display: block;
+  position: relative;
+  z-index: 2; /* above overlay */
+}/* Ensure .site-title inherits the old header h1 look */
+header .site-title, /* Ensure .site-title inherits the old header .site-title look */
+header .site-title{
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}/* 2) Post header title: H1 should look like the old H2 */
+.post-header h1, header .site-title, .post-header h2, /* 2) Post header title: H1 should look like the old H2 */
+.post-header .site-title{
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 2.5em;
+  position: relative;
+  text-align: center;
+  margin: .25rem 0 1.5rem 0;
+  line-height: 1.2;
+}.post-header h1::after, .post-header h2::after, .post-@media (max-width: 600px){
+  .post-header h1, header .site-title,
+  .post-header h2 {
+    font-size: 2em;
+  }
+}
 
-        /* Navigáció */
-        nav {
-            background: rgba(0,51,102,0.95);
+/* 3) Hero image spacing/fit */
+.post-image-detail{
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  margin: 0 0 1rem 0;
+}/* 4) Share label alignment for icon-only */
+.share-bottom{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:16px; }.share-bottom .share-label{ font-weight:600; margin-right:4px; }.share-compact .share-bottom a { width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center;
+  text-decoration:none; border:1px solid var(--accent-color); color:var(--accent-color); border-radius:20px; }.share-bottom a:hover{ background: var(--accent-color); color:#fff; }
+
+/* === Header brand typographic parity (light theme safe) === */
+header .site-title {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 2.5em;
+  line-height: 1.2;
+  margin: 0;
+  color: inherit; /* inherits from header rules; color already handled by existing theme styles */
+}
+
+:root:not([data-theme="dark"]) header .site-title {
+  /* If light theme computes different color, ensure it follows the same var as headings */
+  color: var(--text-color);
+}
+
+/* === Force header brand to white in all themes === */
+header .site-title,
+header .site-title::before,
+}/* Navigáció */
+        nav{
+            background: var(--nav-bg);
             backdrop-filter: blur(10px);
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-        }
-
-        nav ul {
+        }nav ul{
             list-style-type: none;
             padding: 0;
             margin: 0;
             display: flex;
             justify-content: center;
-        }
-
-        nav ul li {
+        }nav ul li{
             margin: 0 20px;
-        }
-
-        nav ul li a {
-            color: white;
+        }nav ul li a{
+            color: var(--bg-color);
             text-decoration: none;
             font-weight: 500;
             position: relative;
             padding: 5px 0;
-        }
-
-        nav ul li a::after {
+        }nav ul li a::after{
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background: white;
+    background: white;
             transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover::after {
+        }nav ul li a:hover::after{
             width: 100%;
-        }
-
-        /* Címek */
-        h1, h2, h3 {
-            color: #003366;
-        }
-
-        h2 {
+        }/* Címek */
+        h1, h2, h3{
+            color: var(--text-color);
+        }h2{
             font-size: 2.5em;
             font-weight: 600;
             margin-bottom: 1.5em;
             position: relative;
             text-align: center;
-        }
-
-        h2::after {
+        }h2::after{
             content: '';
             position: absolute;
             bottom: -15px;
@@ -100,118 +180,328 @@
             width: 60px;
             height: 3px;
             background: #003366;
-        }
-
-        /* Konténer */
-        .container {
-			max-width: 1200px;
-			margin: 0 auto;
-			padding: 80px 20px 40px 20px;
-			scroll-margin-top: 70px;
-}
-
-        /* Szolgáltatások */
-        .services {
+        }/* Konténer */
+        .container{
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px 40px 20px;
+            scroll-margin-top: 70px;
+}#bemutatkozas{
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,51,0.1);
+    padding: 25px;
+    transition: all 0.3s ease;
+    transform: scale(1);
+    margin-bottom: 30px;
+}#bemutatkozas p{
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 15px;
+}#bemutatkozas strong{
+    color: var(--text-color);
+    font-weight: 600;
+}#karrier{
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,51,0.1);
+    padding: 25px;
+    transition: all 0.3s ease;
+    transform: scale(1);
+    margin-bottom: 30px;
+}#karrier{
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 15px;
+}#karrier strong{
+    color: var(--text-color);
+    font-weight: 600;
+}/* Szolgáltatások */
+        .services{
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
-        }
-
-        .service {
-            background-color: white;
+        }.service{
+            background-color: var(--card-bg);
             border-radius: 15px;
             box-shadow: 0 4px 6px rgba(0,0,51,0.1);
             padding: 25px;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             transform: scale(1);
-        }
-
-        .service:hover {
-            transform: scale(1.03);
-            box-shadow: 0 10px 20px rgba(0,0,51,0.1);
-        }
-
-        .service img {
+			overflow:visible;
+        }.service:hover{
+			transform: scale(1.03);
+			box-shadow: 0 10px 20px rgba(0, 0, 51, 0.15);
+		}.service img{
             width: 100%;
             aspect-ratio: 16/9;
             object-fit: cover;
             border-radius: 10px;
-        }
-
-        /* Csapattagok */
-	  .team-members {
+        }/* Csapattagok */
+	  .team-members{
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
             margin: 40px 0;
-        }
-
-        .team-member {
+        }.team-member{
             width: 300px;
             text-align: center;
             margin: 20px;
             padding: 25px;
+            /* Alapértelmezésben világos téma: kártya háttere fehér. A sötét módhoz külön felülírás tartozik lent. */
             background: white;
             border-radius: 15px;
             box-shadow: 0 4px 6px rgba(0,0,51,0.1);
             transition: all 0.3s ease;
-        }
-
-
-        .team-member:hover {
+        }.team-member:hover{
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0,0,51,0.15);
-        }
-
-        .team-member img {
+        }.team-member img{
             width: 250px;
             height: 300px;
             object-fit: cover;
             border-radius: 10px;
             margin-bottom: 20px;
-        }
-
-        .motto {
+        }.motto{
             font-style: italic;
-            color: #003366;
+            color: var(--text-color);
             margin-top: 15px;
             font-size: 0.9em;
-            border-top: 1px solid #eee;
+            border-top: 1px solid var(--accent-color);
             padding-top: 15px;
-        }
+        }/* CTA szekció */
+.cta{
+  position: relative;
+  text-align: center;
+  padding: 80px 20px;
+  overflow: hidden;
+}#kapcsolat{
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,51,0.1);
+  padding: 25px;
+  transition: all 0.3s ease;
+  transform: scale(1);
+  margin-bottom: 30px;
+}.form-wrapper.centered{ text-align:center; padding: 1.5rem 0; }.form-wrapper.centered .button{ display:inline-block; font-size:1.125rem; padding:.9rem 1.5rem; }.form-note{ margin-top:.5rem; font-size:.95rem; opacity:.8; }/*
+ * Animáció: elemek megjelenése görgetéskor
+ * A .fade-in osztályhoz alapértelmezett áttetszőség és eltolás tartozik, * míg az .appear osztály aktiválásakor a látványosság elhagyja ezeket a stílusokat.
+ */
+.fade-in{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}.fade-in.appear{
+    opacity: 1;
+    transform: translateY(0);
+}/* Sötét mód kapcsoló gomb stílusa */
+.theme-toggle{
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    background: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.2em;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}/* Megosztás gombok blogposzt oldalon */
+.share-buttons{
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}.share-buttons a{
+    text-decoration: none;
+    color: var(--accent-color);
+    font-size: 1.2em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--accent-color);
+    transition: background-color 0.3s ease;
+}.share-buttons a:hover{
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+}/* ----- Social feed section styles ----- */
+/* This section displays embedded Facebook and Instagram feeds side by side on
+   larger screens and stacked on smaller devices. Colours adapt via CSS variables
+   defined on :root and .dark-mode. */
+.social-feed{
+    padding: 3rem 1rem;
+    background-color: var(--card-bg);
+    text-align: center;
+}.social-feed h2{
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}.feed-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}.feed-container > div{
+    flex: 1 1 45%;
+    min-width: 280px;
+    /* Ne állítsuk be a display-t itt, hogy az egyes alosztályok
+     * (pl. .insta-feed) megőrizhessék saját layoutját (grid). */
+}.feed-container iframe{
+    width: 100%;
+    max-width: 500px;
+    height: 400px;
+    margin: 0 auto;
+    display: block;
+}/* A Facebook beágyazás elhelyezéséhez rugalmas dobozt használunk, * így a plugin a rendelkezésre álló helyen középre igazodik. */
+.fb-feed{
+    width:100%;
+}/* Style for Instagram placeholder when embed is not available */
+.instagram-placeholder{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}.instagram-placeholder a{
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+}.instagram-placeholder a:hover{
+    text-decoration: underline;
+}/* --------------------------------------------------------------
+ * További stílusok és sötét mód felülírások
+ *
+ * Az alábbi szakasz olyan stílusokat definiál, amelyek a korábbi
+ * fejlesztések során kimaradt elemeket harmonizálják a sötét témával, * illetve statikus Instagram-gridet biztosítanak, ha az embed nem
+ * elérhető. Ezek a szabályok nem befolyásolják a világos témát, * mivel a .dark-mode osztály használatával célzottan csak sötét
+ * módban érvényesülnek.
+ */
 
-        /* CTA szekció */
-        .cta {
-            background-image: url(images/cta_background.jpeg);
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 80px 0;
-            position: relative;
-        }
-
-        .cta::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(0,51,102,0.9) 0%, rgba(0,102,204,0.8) 100%);
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta h2 {
-            color: white;
-        }
-
-        /* Gombok */
-        .button {
+/* Statikus Instagram feed rácsos elrendezéssel. A szülő konténeren
+ * belül a képek automatikusan törnek sorba és azonos szélességet
+ * kapnak. */
+.insta-feed{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 0 10px;
+    max-width: 800px;
+    margin: 0 auto;
+}.insta-feed img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    /* Finom árnyék a kártyákhoz hasonlóan */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}/* Sötét mód felülírás a csapattag kártyákhoz. Amikor a felhasználó
+ * sötét témát választ, a kártyák háttérszíne és szövegszíne
+ * alkalmazkodik a sötétebb árnyalatokhoz. */
+.dark-mode .team-member{
+    background: var(--card-bg);
+    color: var(--text-color);
+}.dark-mode .team-member h3, .dark-mode .team-member p{
+    color: var(--text-color);
+}/* Sötét mód felülírás az értékelések (testimonial) kártyáinál, * modaloknál és információs dobozoknál. Ezek a blokkok eredetileg
+ * fehér háttérrel rendelkeznek, ami sötét témában túl világos. */
+.dark-mode .reviews-carousel, .dark-mode .info-card, .dark-mode .modal-content, .dark-mode .toc, .dark-mode .accordion-header, .dark-mode .accordion-content, .dark-mode .accordion-item{
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}/* A sötét módú értékelések határvonalát hangsúlyozzuk az akcentus
+ * színnel, így jobban elkülönülnek a háttértől. */
+.dark-mode .accordion-item{
+    border-color: var(--accent-color);
+}/* A hivatkozások és kiemelések a sötét módban az akcentus
+ * színnel jelenjenek meg, ezzel biztosítva a kontrasztot. */
+.dark-mode .toc a, .dark-mode .accordion-header, .dark-mode .reviewer{
+    color: var(--accent-color);
+}/* A cikk navigációs gombok (carousel gombok) sötét témában az
+ * akcentus színnel és világos szöveggel jelenjenek meg. */
+.dark-mode .carousel-button{
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+}/* Menü hivatkozások sötét módban: a szöveg színét és az aláhúzást
+ * biztosító csíkot az általános szövegszínre állítjuk, hogy
+ * elég kontraszt legyen a sötét háttéren. */
+.dark-mode nav ul li a{
+    color: var(--text-color);
+}.dark-mode nav ul li a::after{
+    background: var(--text-color);
+}/* Az ikonok színe az információs kártyákban és az adatvédelmi
+ * tájékoztató szakaszokban sötét témában alkalmazkodjon az
+ * akcentusszínhez. */
+.dark-mode .accordion-content i, .dark-mode .info-card i{
+    color: var(--accent-color);
+}/*
+ * Dark mode overrides for contact forms and select elements.
+ * Ensure the background, text and border colours harmonise with the dark theme.
+ */
+.dark-mode .contact-form input, .dark-mode .contact-form textarea, .dark-mode .contact-form select{
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-color: var(--accent-color);
+}.dark-mode .contact-form select option{
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}/* Cookie sáv finom módosítása: teljes szélességű alsó sáv. A sáv a képernyő alján fut végig, * és a méretét, pozícióját a cookies.css határozza meg. */
+.cookie-widget{
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 auto;
+    max-width: none;
+    /* Inherit width from cookies.css (például 90%); ne kényszerítsük teljes szélességre itt */
+    width: auto;
+    border-radius: 0;
+}/* Fejléc mérete a cookie sávban: az alapértelmezett értékre állítjuk vissza */
+.cookie-widget .widget-header{
+    font-size: 1rem;
+}/* A gombok színe a cookie sávban: visszaállítjuk az eredeti háttér- és szövegszínt.
+ * A padding és méret a cookies.css-ben definiált értékeket örökli. */
+.cookie-widget .widget-actions button{
+    background: var(--button-bg);
+    color: var(--button-text);
+}.cta picture, .cta picture img, .cta-overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}.cta-overlay{
+  background: linear-gradient(45deg, rgba(0,51,102,0.9), rgba(0,102,204,0.8));
+  z-index: 1;
+}.cta-content h2, .cta-content p{
+  color: white;
+  z-index: 2;
+  position: relative;
+}.cta-content{
+  position: relative;
+  z-index: 2;
+}.cta-content .button{
+  position: relative;
+  z-index: 2;
+  color: white;
+}/* Gombok */
+        .button{
             display: inline-block;
             background: linear-gradient(45deg, #003366 0%, #0066cc 100%);
             color: white;
@@ -221,97 +511,52 @@
             font-weight: 500;
             box-shadow: 0 4px 15px rgba(0,51,102,0.2);
             transition: all 0.3s ease;
-        }
-
-        .button:hover {
+        }.button:hover{
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0,51,102,0.3);
-        }
-
-        /* Lábléc */
-        footer {
-            background-color: #003366;
-            color: white;
+        }/* Lábléc */
+        footer{
+            background-color: var(--nav-bg);
+            color: var(--text-color);
             text-align: center;
             padding: 40px 20px;
-        }
-
-        .social-icons {
+        }.social-icons{
             margin: 20px 0;
-        }
-
-        .social-icons a {
-            color: white;
+        }.social-icons a{
+            color: var(--text-color);
             margin: 0 10px;
             font-size: 24px;
             transition: transform 0.3s ease;
-        }
-
-        .social-icons a:hover {
+        }.social-icons a:hover{
+            transform: scale(1.1);
+        }.social-icons a:hover{
             transform: translateY(-3px);
-        }
-
-        /* Scroll to top gomb */
-        .scroll-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #003366;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1000;
-        }
-
-        .scroll-top.visible {
-            opacity: 1;
-        }
-
-        /* Cookie figyelmeztetés */
-        .cookie-notice {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0,51,102,0.95);
-            color: white;
-            padding: 15px;
-            text-align: center;
-            z-index: 1000;
-            display: none;
-        }
-
-        .cookie-notice button {
-            margin-left: 20px;
-            padding: 8px 20px;
-            border: none;
-            border-radius: 20px;
-            background: white;
-            color: #003366;
-            cursor: pointer;
-        }
-
-        /* Kapcsolat űrlap */
-			.contact-form select {
-			width: 100%;
-			padding: 10px;
-			margin: 10px 0;
-			border: 1px solid #ddd;
-		border-radius: 5px;
-    font-family: 'Poppins', sans-serif;
-    background-color: white;
-    color: #666;
-}
-
-		/* Kapcsolat űrlap */
-		.contact-form select {
+        }/* Scroll to top gomb */
+.scroll-top{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #003366; /* Kék háttér */
+    color: white; /* Szöveg színe fehér */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0; /* Kezdetben rejtett */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}.scroll-top.visible{
+    opacity: 1; /* Látványos, ha aktív */
+}.scroll-top:hover{
+    transform: scale(1.1); /* Nagyobb lesz hover esetén */
+}.fas{
+    margin-right: 5px; 
+    color: white; /* Nyíl színe fehér */
+}/* Kapcsolat űrlap */
+		.contact-form select{
 			width: 100%;
 			padding: 10px;
 			margin: 10px 0;
@@ -320,205 +565,356 @@
 			font-family: 'Poppins', sans-serif;
 			background-color: white;
 			color: #666;
-		}
-
-		.contact-form select:focus {
+		}.contact-form select:focus{
 			outline: none;
 			border-color: #003366;
-		}
-
-		.contact-form input,
-		.contact-form textarea {
+		}.contact-form input, .contact-form textarea{
 			width: 100%;
 			padding: 10px;
 			margin: 10px 0;
 			border: 1px solid #ddd;
 			border-radius: 5px;
 			font-family: 'Poppins', sans-serif;
-		}
-
-		.contact-form textarea {
+		}.contact-form textarea{
 			height: 150px;
-		}
-
-
-        /* Reszponzív design */
-        @media (max-width: 768px) {
+		}/* Reszponzív design */
+        @media (max-width: 768px){
             .services {
                 grid-template-columns: 1fr;
-            }
-
-            .team-member {
+            }.team-member{
                 width: 100%;
                 max-width: 300px;
-            }
-
-            nav ul {
+            }nav ul{
                 flex-direction: column;
                 align-items: center;
-            }
-
-            nav ul li {
+            }nav ul li{
                 margin: 10px 0;
             }
-        }
-				.google-reviews {
-			  background-color: white;
-			  border-radius: 15px;
-			  box-shadow: 0 4px 6px rgba(0,0,51,0.1);
-			  padding: 25px;
-			  margin-top: 40px;
-			  transition: all 0.3s ease;
-			}
+}
 
-			.google-reviews h2 {
-			  color: #003366;
-			  font-size: 2em;
-			  font-weight: 600;
-			  margin-bottom: 1em;
-			  position: relative;
-			  text-align: center;
-			}
-
-			.google-reviews h2::after {
-			  content: '';
-			  position: absolute;
-			  bottom: -10px;
-			  left: 50%;
-			  transform: translateX(-50%);
-			  width: 50px;
-			  height: 3px;
-			  background: #003366;
-			}
-
-			.review-item {
-			  background: #f0f8ff;
-			  border-radius: 10px;
-			  padding: 15px;
-			  margin-bottom: 20px;
-			  transition: all 0.3s ease;
-			}
-
-			.review-item:hover {
-			  transform: translateY(-5px);
-			  box-shadow: 0 5px 15px rgba(0,0,51,0.08);
-			}
-
-			.reviewer-name {
-			  font-weight: 500;
-			  color: #003366;
-			  margin-bottom: 5px;
-			}
-
-			.review-text {
-			  font-style: italic;
-			  color: #666;
-			}
-
-			.review-rating {
-			  color: #ffd700;
-			  font-size: 1.2em;
-			  margin-top: 10px;
-			}
 			/* Jogi linkek */
-.modal {
+.modal{
   display: none;
   position: fixed;
-  z-index: 1000;
+  z-index: 99999;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
   background-color: rgba(0,0,0,0.4);
-}
-
-.modal-content {
+}.modal-content{
   max-width: 800px;
   margin: 20px auto;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.toc {
+}.toc{
   background-color: #f8f9fa;
   padding: 15px;
   border-radius: 5px;
   margin-bottom: 20px;
-}
-
-.toc ul {
+}.toc ul{
   list-style-type: none;
   padding-left: 0;
-}
-
-.toc a {
+}.toc a{
   color: #333;
   text-decoration: none;
-}
-
-.accordion-item {
+}.accordion-item{
   border: 1px solid #e0e0e0;
   margin-bottom: 10px;
   border-radius: 5px;
-}
-
-.accordion-header {
+}.accordion-header{
   background-color: #f8f9fa;
   padding: 10px 15px;
   cursor: pointer;
   margin: 0;
-}
-
-.accordion-content {
+}.accordion-content{
   padding: 15px;
   display: none;
-}
-
-.info-card {
+}.info-card{
   background-color: #fff;
   border: 1px solid #e0e0e0;
   border-radius: 5px;
   padding: 15px;
   margin-bottom: 15px;
-}
-
-.last-updated {
+}.last-updated{
   font-style: italic;
   text-align: right;
   margin-top: 20px;
-}
-
-
-.close {
+}.close{
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
-}
-
-.close:focus {
+}.close:focus{
   color: black;
   text-decoration: none;
   cursor: pointer;
+}footer .legal-links a{
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}footer .legal-links a:hover{
+  color: #cccccc;
+  text-decoration: underline;
+}/* Hamburger ikon – mobilnézetben fixen balra */
+.hamburger{
+  display: none; /* alapból rejtett */
+}@media (max-width: 768px){
+  .hamburger {
+    display: block;
+    position: fixed !important; /* fix pozíció */
+    top: 15px !important;
+    left: 15px !important; /* bal oldalra kényszerítve */
+    right: auto !important; /* ez biztosítja, hogy ne legyen jobb oldalon */
+    font-size: 1.5rem;
+    background-color: #003366;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+    z-index: 1100;
+    cursor: pointer;
+  }.compact-nav{
+    display: none; /* alapból rejtett */
+    flex-direction: column;
+    position: fixed; /* fixen marad görgetéskor */
+    top: 55px; /* ikon alá igazítva */
+    left: 0; /* bal oldalon */
+    width: 200px;
+    background-color: #003366;
+    padding: 1rem;
+    z-index: 1000;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }.compact-nav.open{
+    display: flex; /* láthatóvá válik, ha nyitva van */
+  }.compact-nav ul{
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }.compact-nav li{
+    margin: 0;
+  }.compact-nav a{
+    color: white;
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 0.3rem 0;
+  }
+}
+.accordion-content i, .info-card i{
+    color: #003366;
+}/* Világos témában fehérek a lábléc ikonok */
+body:not(.dark-mode) footer .social-icons a i{
+  color: white !important;
+}body:not(.dark-mode) footer .social-icons a:hover i{
+  color: #cccccc !important;
+}
 }
 
-.cookie-settings {
-  background-color: #f0f0f0;
-  padding: 15px;
-  border-radius: 5px;
-  margin-top: 10px;
+
+
+/* === OVERRIDE: Cikkoldali H1 stílus egyezzen a korábbi H2-vel === */
+.post-header h1, header .site-title, .post-header h2, }
+
+
+
+/* === OVERRIDE: Cikkoldali H1 stílus egyezzen a korábbi H2-vel === */
+.post-header .site-title{
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 2.5em;
+  position: relative;
+  text-align: center;
+  margin: 0.25rem 0 1.5rem 0;
+  line-height: 1.2;
+}/* Ugyanaz a díszcsík a cím alatt
+.post-header h1::after, header .site-title::after, .post-header h2::after
+.post-/* Mobilon kicsit kisebb cím, hogy törés nélkül elférjen */
+@media (max-width: 600px){
+  .post-header h1, header .site-title,
+  .post-header h2 {
+    font-size: 2em;
+  }
 }
 
-.cookie-settings label {
-  display: block;
-  margin-bottom: 10px;
+
+.share-bottom{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:16px; }.share-bottom .share-label{ font-weight:600; margin-right:4px; }.share-bottom a{ display:inline-flex; align-items:center; gap:6px; text-decoration:none; border:1px solid var(--accent-color); color:var(--accent-color); padding:.4rem .8rem; border-radius:20px; font-weight:500; }.share-bottom a:hover{ background: var(--accent-color); color: #fff; }.post-image-detail{ width:100%; max-height:350px; object-fit:cover; display:block; border-radius:8px; margin:0 0 1rem 0; }/* Icon-only share buttons */
+.share-bottom{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:16px; }.share-bottom .share-label{ font-weight:600; margin-right:4px; }.share-compact .share-bottom a { width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center;
+  text-decoration:none; border:1px solid var(--accent-color); color:var(--accent-color); border-radius:20px; }.share-bottom a:hover{ background: var(--accent-color); color:#fff; }
+
+
+/* === Header brand typographic parity (light theme safe) === */
+header .site-title {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 2.5em;
+  line-height: 1.2;
+  margin: 0;
+  color: inherit; /* inherits from header rules; color already handled by existing theme styles */
 }
 
-.fas {
-  margin-right: 5px;
-  color: #4a4a4a;
+:root:not([data-theme="dark"]) header .site-title {
+  /* If light theme computes different color, ensure it follows the same var as headings */
+  color: var(--text-color);
+}
+
+
+
+/* === Force header brand to white in all themes === */
+header .site-title,
+header .site-title::before,
+/* BLOG: Megosztás gombok fix – ne legyen 40x40-re kényszerítve, és szépen törjön */
+.post-wrapper .share-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 18px;
+}
+.post-wrapper .share-bottom a {
+  width: auto !important;
+  height: auto !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: .4rem .8rem;
+  border: 1px solid var(--accent-color, #1e3a8a);
+  border-radius: 20px;
+  text-decoration: none;
+  color: var(--accent-color, #1e3a8a);
+  background: var(--card-bg, #fff);
+  line-height: 1;
+}
+.post-wrapper .share-bottom a:hover {
+  background: var(--accent-color, #1e3a8a);
+  color: #fff;
+}
+.post-wrapper .share-bottom i {
+  margin-right: 2px;
+}
+
+
+/* Ugyanaz a díszcsík a cím alatt, mint a H2-nél */
+.post-header h1::after,
+header .site-title::after,
+.post-header h2::after,
+.post-/* BLOG – alap (pill) megosztás gombok */
+.share-bottom {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 16px;
+}
+.share-bottom .share-label { font-weight: 600; margin-right: 4px; }
+
+/* Alapértelmezett: szöveges „pill” stílus */
+.share-bottom a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: .4rem .8rem;
+  border: 1px solid var(--accent-color, #1e3a8a);
+  color: var(--accent-color, #1e3a8a);
+  text-decoration: none;
+  border-radius: 20px;
+  width: auto;
+  height: auto;
+  line-height: 1;
+}
+.share-bottom a:hover {
+  background: var(--accent-color, #1e3a8a);
+  color: #fff;
+}
+
+/* Opcionális ikon-only használat (pl. fejléc): tedd a szülőre .share-compact-ot */
+.share-compact .share-bottom a {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  justify-content: center;
+  gap: 0;
+}
+
+
+
+/* LAST-RESORT: biztos felülírás a cikkoldalakon */
+.post-header + .share-bottom a,
+.post-wrapper .share-bottom a {
+  width: auto !important;
+  height: auto !important;
+  padding: .4rem .8rem !important;
+  gap: 8px !important;
+  justify-content: flex-start !important;
+}
+
+
+
+/* SEO/CSS fix: the header brand must not have underline decoration */
+header .site-title { text-decoration: none; }
+header .site-title::after { content: none !important; display: none !important; }
+
+
+/* Post title/subtitle underline (article only) */
+.post-header h1::after,
+.post-header h2::after,
+.post-header .site-title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+  width: 60px;
+  height: 3px;
+  background: #003366;
+}
+
+
+
+/* === Blog layout & underline fixes === */
+
+/* Szellősebb szöveg a cikkekben */
+.post-content {
+  line-height: 1.6;
+  font-size: 1.05rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+.post-content p {
+  margin-bottom: 1.2em;
+}
+
+/* Blogcím alatti díszcsík fix */
+.post-header h1 {
+  margin-bottom: 2rem;
+  position: relative;
+}
+.post-header h1::after {
+  bottom: -14px;
+}
+/* Blogcikkek H2–H3 egységes hierarchia */
+.post-content h2 {
+  font-size: 1.25rem;      /* picit nagyobb mint H3 */
+  font-weight: 600;        /* félkövér */
+  margin: 2rem 0 1rem;     /* térköz */
+  text-align: left;        /* balra igazítva */
+  position: static;        /* ne örököljön csíkot */
+}
+
+.post-content h2::after {
+  content: none !important;  /* aláhúzás tiltása */
+}
+
+.post-content h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 1.5rem 0 0.75rem;
+  text-align: left;
 }

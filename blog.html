@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+
+<html lang="hu">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="A legfrissebb pénzügyi cikkek, tippek és útmutatók az Érthető Pénzügy blogon. Tudatosabb döntések, jobb eredmények." name="description"/>
+<meta content="pénzügyi blog, befektetés, nyugdíj, biztosítás, pénzügyi tippek, adókedvezmény, megtakarítás" name="keywords"/>
+<meta content="Érthető Pénzügy" name="author"/>
+<link href="https://www.erthetopenzugy.hu/blog.html" rel="canonical"/>
+<meta content="Blog – Érthető Pénzügy" property="og:title"/>
+<meta content="Olvassa el legfrissebb pénzügyi cikkeinket: megtakarítás, befektetés, biztosítás és sok más téma érthetően." property="og:description"/>
+<meta content="https://www.erthetopenzugy.hu/blog.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="https://www.erthetopenzugy.hu/images/blog-cover.webp" property="og:image"/>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Érthető Pénzügy",
+    "url": "https://www.erthetopenzugy.hu",
+    "logo": "https://www.erthetopenzugy.hu/images/favicon.png",
+    "description": "Személyre szabott pénzügyi tanácsadás: biztosítás, hitel, befektetés, nyugdíj, gyermek megtakarítás, kgfb, casco, adókedvezmények.",
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61569678660948",
+      "https://www.instagram.com/ertheto_penzugy"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+36 20 296 7292",
+      "contactType": "customer service",
+      "areaServed": "HU",
+      "availableLanguage": "Hungarian"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Vörösmarty tér 4",
+      "addressLocality": "Veszprém",
+      "postalCode": "8200",
+      "addressCountry": "HU"
+    }
+  }
+  </script>
+<title>Blog – Érthető Pénzügy</title>
+<link href="images/favicon_32x32.webp" rel="icon" sizes="32x32"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet"/>
+<link href="cookies.css" rel="stylesheet"/>
+<style>
+    /* Additional blog-specific styles */
+    /* Optional styling for the blog intro section */
+    .blog-intro h2 {
+      /* Use the global text colour so the heading is visible in both light and dark themes */
+      color: var(--text-color);
+      margin-bottom: 0.5rem;
+    }
+    .blog-intro p {
+      color: var(--text-color);
+    }
+    .post-card {
+      background: var(--card-bg);
+      color: var(--text-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .post-card h3 {
+      margin-top: 0;
+      color: var(--text-color);
+    }
+    .post-card p.meta {
+      font-size: 0.85rem;
+      color: var(--text-color);
+    }
+    .post-card .excerpt {
+      margin: 0.5rem 0 1rem;
+      color: var(--text-color);
+    }
+    .read-more {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .read-more:hover {
+      text-decoration: underline;
+    }
+    .read-more-text {
+      color: var(--accent-color);
+      font-weight: 500;
+      margin-top: 0.5rem;
+    }
+    #post-detail {
+      display: none;
+    }
+    #post-detail h2 {
+      color: var(--text-color);
+    }
+    #post-detail p.meta {
+      font-size: 0.85rem;
+      color: var(--text-color);
+    }
+    #post-detail .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    /* Styling for blog post images */
+    .post-card .post-image {
+      width: 100%;
+      max-height: 200px;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      object-fit: cover;
+    }
+    #post-detail .post-image-detail {
+      width: 100%;
+      max-height: 350px;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      object-fit: cover;
+    }
+
+    /* Hover effect for blog cards, similar to services section */
+    .post-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 20px rgba(0,0,51,0.1);
+    }
+
+    /* Layout the blog list in a responsive two-column grid similar to the services section */
+    #blog-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+    /* On small screens stack blog cards into a single column */
+    @media (max-width: 768px) {
+      #blog-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Provide extra spacing between the blog heading and its subheading */
+    .blog-intro h2 {
+      margin-bottom: 1rem;
+    }
+    .blog-intro p {
+      /* Provide more breathing room between the blog heading and subtitle */
+      margin-top: 3rem;
+    }
+
+    /* Style images that are included inside blog post content so they scale nicely */
+    #post-detail .content img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 1.5rem auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: auto;
+      max-height: 80vh; /* ne legyen túl magas se */
+      object-fit: contain;
+    }
+
+    /* Category filter styles */
+    .category-filters .category-filter-btn {
+      background: var(--card-bg);
+      color: var(--accent-color);
+      border: 1px solid var(--accent-color);
+      border-radius: 20px;
+      padding: 0.3rem 0.75rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .category-filters .category-filter-btn:hover,
+    .category-filters .category-filter-btn.active {
+      background: var(--accent-color);
+      color: #fff;
+    }
+
+    /* Poll section styles */
+    .poll-section {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: var(--card-bg);
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .poll-section h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+    .poll-section p {
+      margin: 0.5rem 0;
+      color: var(--text-color);
+    }
+    .poll-option {
+      display: block;
+      margin: 0.4rem 0;
+      padding: 0.4rem 0.8rem;
+      background: var(--card-bg);
+      color: var(--accent-color);
+      border: 1px solid var(--accent-color);
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .poll-option:hover {
+      background: var(--accent-color);
+      color: #fff;
+    }
+    .poll-results .poll-result-item {
+      margin: 0.5rem 0;
+    }
+    .poll-result-bar {
+      height: 8px;
+      background: var(--accent-color);
+      border-radius: 4px;
+      margin-top: 0.2rem;
+    }
+
+    /* Comments section styles */
+    .comments-section {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: var(--card-bg);
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .comments-section h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+    .comment-list .comment {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      padding-bottom: 0.5rem;
+    }
+    .comment-list .comment strong {
+      color: var(--accent-color);
+    }
+    .comment-form input,
+    .comment-form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      border: 1px solid rgba(0,0,0,0.2);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      background: var(--input-bg, #fff);
+      color: var(--text-color);
+    }
+    .comment-form textarea {
+      resize: vertical;
+    }
+    .comment-form button {
+      background: var(--accent-color);
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+    }
+    .comment-form button:hover {
+      background: #004b9a;
+    }
+
+    /* Related posts item styling */
+    .related-post-item {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+    .related-post-item:hover {
+      text-decoration: underline;
+    }
+  </style>
+</link></head>
+<body>
+<header>
+<picture>
+<!-- Responsive header background for the blog. The largest image loads by default,
+           with smaller versions served on narrower screens. We add loading="lazy"
+           so the image is deferred on slower connections and provide a descriptive
+           alt text for accessibility and SEO. -->
+<source media="(max-width: 600px)" srcset="images/header_background-400.webp"/>
+<source media="(max-width: 1024px)" srcset="images/header_background-800.webp"/>
+<img alt="Blog fejléc háttér" loading="lazy" src="images/header_background-1200.webp"/>
+</picture>
+<div class="header-overlay"></div>
+<div class="site-title">Érthető Pénzügy</div>
+<button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+</header>
+<nav class="compact-nav" id="mobileNav">
+<ul>
+<li><a href="index.html#start" onclick="toggleMobileMenu()">Bemutatkozás</a></li>
+<li><a href="index.html#szolgaltatasok" onclick="toggleMobileMenu()">Szolgáltatások</a></li>
+<li><a href="index.html#tanacsadoink" onclick="toggleMobileMenu()">Tanácsadóink</a></li>
+<li><a href="index.html#rolunk" onclick="toggleMobileMenu()">Rólunk írták</a></li>
+<li><a href="index.html#kapcsolat" onclick="toggleMobileMenu()">Kapcsolat</a></li>
+<li><a href="index.html#karrier" onclick="toggleMobileMenu()">Karrier</a></li>
+<!-- Új menüpont a tőketartozás‑kalkulátorhoz -->
+<li><a href="kalkulator.html" onclick="toggleMobileMenu()">Kalkulátor</a></li>
+<li><a href="blog.html" onclick="toggleMobileMenu()">Blog</a></li>
+</ul>
+</nav>
+<main>
+<!-- Blog heading using the same container layout as the rest of the site -->
+<div class="container blog-intro" style="text-align:center; margin-top:40px;">
+<h1>Blog</h1>
+<p>Olvassa el legfrissebb pénzügyi tippjeinket és cikkeinket.</p>
+</div>
+<!-- Filters: search bar and category filter. These help users quickly find content and improve interaction. -->
+<div class="container blog-filters" style="margin-top: 20px; display:flex; flex-direction: column; align-items: center; gap:1rem;">
+<!-- Search bar for filtering blog posts; categories have been removed to simplify the interface. -->
+<input id="blog-search" placeholder="Keresés a cikkek között…" style="padding:0.5rem 1rem; border:1px solid var(--accent-color); border-radius:4px; width:100%; max-width:500px;" type="search"/>
+<!-- Category filter removed: previously there was a category filter bar here. -->
+</div>
+<!-- Blog content list and detail views -->
+<div class="container">
+<div id="blog-list"></div>
+<div id="post-detail"></div>
+</div>
+</main>
+<footer>
+<div class="social-icons">
+<a href="https://www.facebook.com/profile.php?id=61569678660948"><i class="fab fa-facebook"></i></a>
+<a href="https://www.instagram.com/ertheto_penzugy"><i class="fab fa-instagram"></i></a>
+</div>
+<p>© 2024 Érthető Pénzügy. Minden jog fenntartva.</p>
+<p>E-mail: kapcsolat@erthetopenzugy.hu | Tel: 06202967292</p>
+<p>Cím: 8200, Veszprém, Vörösmarty tér 4</p>
+<div class="legal-links">
+<a href="#" onclick="showContent('adatkezeles');return false;">Adatkezelési tájékoztató</a> |
+      <a href="#" onclick="showContent('impresszum');return false;">Impresszum</a>
+</div>
+</footer>
+<div class="scroll-top">
+<i class="fas fa-chevron-up"></i>
+</div>
+<!-- Adatkezelési tájékoztató modal (rövidített) -->
+<!-- Full Adatkezelési tájékoztató modal copied from the main index for consistency -->
+<div class="modal" id="adatkezeles">
+<div class="modal-content">
+<span class="close" onclick="hideContent('adatkezeles')">×</span>
+<h2>Adatkezelési tájékoztató</h2>
+<div class="accordion">
+<div class="accordion-item" id="adatkezelo">
+<h3 class="accordion-header">1. Az adatkezelő adatai</h3>
+<div class="accordion-content">
+<div class="info-card">
+<p><i class="fas fa-building"></i> <strong>Név:</strong> Horváth Gonna Solve It Korlátolt Felelősségű Társaság</p>
+<p><i class="fas fa-map-marker-alt"></i> <strong>Székhely:</strong> 8230 Balatonfüred, Krúdy Gyula sor 4/B.</p>
+<p><i class="fas fa-file-alt"></i> <strong>Cégjegyzékszám:</strong> 19-09-523953</p>
+<p><i class="fas fa-id-card"></i> <strong>Adószám:</strong> 32330430-1-19</p>
+<p><i class="fas fa-envelope"></i> <strong>E-mail:</strong> kapcsolat@erthetopenzugy.hu</p>
+<p><i class="fas fa-phone"></i> <strong>Telefon:</strong> +36 20 296 7292</p>
+</div>
+</div>
+</div>
+<div class="accordion-item" id="kezelt-adatok">
+<h3 class="accordion-header">2. A kezelt személyes adatok köre</h3>
+<div class="accordion-content">
+<p>Weboldalunk látogatása során a következő személyes adatokat kezeljük:</p>
+<ul>
+<li>IP cím</li>
+<li>A látogatás időpontja</li>
+<li>A megtekintett oldalak adatai</li>
+<li>Az Ön által használt böngésző és operációs rendszer típusa</li>
+</ul>
+<p>Ingyenes tanácsadásra való jelentkezés esetén az alábbi adatokat gyűjtjük:</p>
+<ul>
+<li>Név</li>
+<li>E-mail cím</li>
+<li>Telefonszám</li>
+</ul>
+</div>
+</div>
+<div class="accordion-item" id="cel-jogalap">
+<h3 class="accordion-header">3. Az adatkezelés célja és jogalapja</h3>
+<div class="accordion-content">
+<p>Adatkezelésünk célja:</p>
+<ul>
+<li>A weboldal megfelelő működésének biztosítása</li>
+<li>A felhasználói élmény javítása</li>
+<li>Kapcsolattartás az ügyfelekkel</li>
+<li>Szolgáltatásaink fejlesztése</li>
+<li>Ingyenes tanácsadás biztosítása és időpontegyeztetés</li>
+</ul>
+<p>Az adatkezelés jogalapja:</p>
+<ul>
+<li>A weboldal működéséhez szükséges adatok esetében: jogos érdek (GDPR 6. cikk (1) bekezdés f) pont)</li>
+<li>Az ingyenes tanácsadásra való jelentkezés során megadott adatok esetében: az Ön önkéntes hozzájárulása (GDPR 6. cikk (1) bekezdés a) pont)</li>
+</ul>
+</div>
+</div>
+<div class="accordion-item" id="idotartam">
+<h3 class="accordion-header">4. Az adatkezelés időtartama</h3>
+<div class="accordion-content">
+<ul>
+<li>A látogatással kapcsolatos adatokat 30 napig őrizzük meg.</li>
+<li>Az ingyenes tanácsadásra való jelentkezés során megadott adatokat a tanácsadás lebonyolítását követő 30 napig, vagy az Ön hozzájárulásának visszavonásáig tároljuk.</li>
+<li>A kapcsolatfelvétel során megadott egyéb adatokat az ügy lezárását követő 1 évig tároljuk, kivéve, ha jogszabály hosszabb megőrzési időt ír elő.</li>
+</ul>
+</div>
+</div>
+<div class="accordion-item" id="jogok">
+<h3 class="accordion-header">5. Az Ön jogai</h3>
+<div class="accordion-content">
+<p>Önnek joga van:</p>
+<ul>
+<li>Tájékoztatást kérni az adatkezelésről</li>
+<li>Hozzáférni a kezelt adataihoz</li>
+<li>Kérni az adatok helyesbítését vagy törlését</li>
+<li>Tiltakozni az adatkezelés ellen</li>
+<li>Adathordozhatósághoz való jogát gyakorolni</li>
+<li>Visszavonni a hozzájárulását az adatkezeléshez</li>
+</ul>
+<p>Az adatai törlését vagy a hozzájárulás visszavonását a kapcsolat@erthetopenzugy.hu e‑mail címen kérheti.</p>
+</div>
+</div>
+<div class="accordion-item" id="adatbiztonsag">
+<div class="accordion-item" id="adattovabbitas">
+<h3 class="accordion-header">7. Adattovábbítás</h3>
+<div class="accordion-content">
+<p>Az Ön által megadott személyes adatokat nem továbbítjuk harmadik félnek, kivéve:</p>
+<ul>
+<li>Jogszabályi kötelezettség esetén</li>
+<li>
+                  Google Analytics szolgáltatás használata keretében, melynek során az adatok az Egyesült Államokba kerülnek átvitelre. Az adattovábbítás jogalapja az Ön hozzájárulása (GDPR 6. cikk (1) bekezdés a) pont), valamint a Google LLC részvétele az EU–US Data Privacy Framework alapján, amelyet az Európai Bizottság megfelelőségi határozata elismer (GDPR 45. cikk).
+                </li>
+</ul>
+<p>Harmadik országba történő adattovábbítás esetén a GDPR 44‑49. cikkeiben foglalt garanciákat alkalmazzuk.</p>
+</div>
+</div>
+</div>
+<div class="accordion-item" id="automatalt-dontes">
+<h3 class="accordion-header">8. Automatizált döntéshozatal</h3>
+<div class="accordion-content">
+<p>Weboldalunk nem alkalmaz automatizált döntéshozatali folyamatokat, beleértve a profilalkotást sem.</p>
+</div>
+</div>
+<div class="accordion-item" id="sutik">
+<h3 class="accordion-header">9. Sütik (cookie‑k) kezelése</h3>
+<div class="accordion-content">
+<section class="cookie-policy">
+<h3>Cookie Szabályzat</h3>
+<h4>Milyen sütiket használunk?</h4>
+<div class="table-container">
+<table>
+<tr>
+<th>Cookie típus</th>
+<th>Név</th>
+<th>Cél</th>
+<th>Élettartam</th>
+</tr>
+<tr>
+<td data-label="Cookie típus">Szükséges</td>
+<td data-label="Név">session_cookie</td>
+<td data-label="Cél">Munkamenet nyilvántartás</td>
+<td data-label="Élettartam">Munkamenet végéig</td>
+</tr>
+<tr>
+<td data-label="Cookie típus">Analitikai</td>
+<td data-label="Név">_ga</td>
+<td data-label="Cél">Látogatók azonosítása (Google Analytics)</td>
+<td data-label="Élettartam">2 év</td>
+</tr>
+<tr>
+<td data-label="Cookie típus">Analitikai</td>
+<td data-label="Név">_gid</td>
+<td data-label="Cél">Látogatók megkülönböztetése (Google Analytics)</td>
+<td data-label="Élettartam">24 óra</td>
+</tr>
+<tr>
+<td data-label="Cookie típus">Analitikai</td>
+<td data-label="Név">_gat</td>
+<td data-label="Cél">Kérések korlátozása (Google Analytics)</td>
+<td data-label="Élettartam">1 perc</td>
+</tr>
+</table>
+</div>
+<div class="cookie-settings">
+<h4>Süti beállítások</h4>
+<label>
+<input checked="" disabled="" id="essential-cookies" type="checkbox"/>
+                  Elengedhetetlen sütik
+                </label>
+<label>
+<input id="analytics-cookies" type="checkbox"/>
+                  Analitikai sütik
+                </label>
+<button class="button" onclick="saveCookieSettings()">Beállítások mentése</button>
+</div>
+</section>
+</div>
+</div>
+<div class="accordion-item" id="panasztetel">
+<h3 class="accordion-header">10. Panasztételi jog</h3>
+<div class="accordion-content">
+<p>Ön jogosult panaszt tenni a felügyeleti hatóságnál, ha úgy érzi, hogy személyes adatainak kezelése nem felel meg a jogszabályi követelményeknek. A felügyeleti hatóság elérhetősége:</p>
+<div class="info-card">
+<p><strong>Nemzeti Adatvédelmi és Információszabadság Hatóság</strong></p>
+<p><i class="fas fa-map-marker-alt"></i> Cím: 1055 Budapest, Falk Miksa utca 9-11.</p>
+<p><i class="fas fa-envelope"></i> Postacím: 1363 Budapest, Pf.: 9.</p>
+<p><i class="fas fa-phone"></i> Telefon: +36 1 391 1400</p>
+<p><i class="fas fa-envelope"></i> E-mail: ugyfelszolgalat@naih.hu</p>
+<p><i class="fas fa-globe"></i> Weboldal: https://www.naih.hu/</p>
+</div>
+</div>
+</div>
+<div class="accordion-item" id="felulvizsgalat">
+<h3 class="accordion-header">11. Az adatvédelmi nyilatkozat felülvizsgálata</h3>
+<div class="accordion-content">
+<p>Jelen adatvédelmi nyilatkozatot rendszeresen, de legalább évente felülvizsgáljuk és szükség esetén frissítjük.</p>
+</div>
+</div>
+<div class="accordion-item" id="kapcsolat">
+<h3 class="accordion-header">12. Kapcsolat</h3>
+<div class="accordion-content">
+<p>Adatvédelemmel kapcsolatos kérdéseivel forduljon hozzánk bizalommal az alábbi elérhetőségeken:</p>
+<div class="info-card">
+<p><i class="fas fa-envelope"></i> E-mail: kapcsolat@erthetopenzugy.hu</p>
+<p><i class="fas fa-phone"></i> Telefon: 06 20 296 7292</p>
+</div>
+</div>
+</div>
+<div class="accordion-item" id="kulso-szolgaltatok">
+<h3 class="accordion-header">13. Külső szolgáltatók igénybevétele (Google Forms, Gmail)</h3>
+<div class="accordion-content">
+<p>
+              A kapcsolatfelvételi űrlap kitöltése során megadott személyes adatokat a Google LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA) szolgáltatásai – Google Forms, Google Sheets és Gmail – dolgozzák fel technikai eszközeikkel.
+            </p>
+<p>
+              Az űrlap és annak válaszai a Google európai adatközpontjaiban kerülnek rögzítésre. Az automatikus értesítés a Gmail szolgáltatáson keresztül kerül továbbításra az adatkezelő emailcímére (kapcsolat@erthetopenzugy.hu).
+            </p>
+<p>
+              A Google LLC az Európai Unió és az Egyesült Államok közötti Adatvédelmi Keretrendszer (EU–US Data Privacy Framework) alapján megfelelőségi nyilatkozattal rendelkezik, így az adattovábbítás jogalapja a GDPR 45. cikk szerinti megfelelőségi határozat.
+            </p>
+<p>
+              Nem történik automatizált döntéshozatal vagy profilalkotás.
+            </p>
+</div>
+</div>
+<p class="last-updated">Utolsó frissítés dátuma: 2025.04.30.</p>
+</div>
+</div>
+</div>
+<!-- Full Impresszum modal copied from the main index for consistency -->
+<div class="modal" id="impresszum">
+<div class="modal-content">
+<span class="close" onclick="hideContent('impresszum')">×</span>
+<h2>Impresszum</h2>
+<div class="info-card">
+<h3><i class="fas fa-info-circle"></i> Szolgáltató adatai</h3>
+<p><strong>Név:</strong> Horváth Gonna Solve It Korlátolt Felelősségű Társaság</p>
+<p><strong>Székhely:</strong> 8230 Balatonfüred, Krúdy Gyula sor 4/B.</p>
+<p><strong>Cégjegyzékszám:</strong> 19-09-523953</p>
+<p><strong>Adószám:</strong> 32330430-1-19</p>
+<p><strong>E-mail:</strong> kapcsolat@erthetopenzugy.hu</p>
+<p><strong>Telefon:</strong> +36 20 296 7292</p>
+</div>
+<div class="info-card">
+<h3><i class="fas fa-server"></i> Tárhelyszolgáltató adatai</h3>
+<p><strong>Név:</strong> Sybell Informatika Kft.</p>
+<p><strong>Cím:</strong> 1158 Budapest, Késmárk u. 7/B 2. em. 206.</p>
+<p><strong>Telefon:</strong> +36 1 707 67 27</p>
+<p><strong>E-mail:</strong> info@sybell.hu</p>
+<p><strong>Web:</strong> www.sybell.hu</p>
+</div>
+</div>
+</div>
+<!-- Cookie preferences widget -->
+<div class="cookie-widget" id="cookieWidget">
+<div class="widget-header">
+<h3>Cookie beállítások</h3>
+<button class="close-widget">×</button>
+</div>
+<div class="ai-recommendation">
+      Ez a weboldal cookie‑kat használ. Kérlek, válaszd ki, milyen típusú cookie‑kat engedélyezel.
+    </div>
+<div class="category-toggle">
+<div class="toggle-item">
+<span>Analitikai cookie (Google Analytics)</span>
+<label class="switch">
+<input id="analyticsToggle" type="checkbox"/>
+<span class="slider"></span>
+</label>
+</div>
+</div>
+<div class="widget-actions">
+<button class="accept-all">Összes elfogadása</button>
+<button class="save-settings">Beállítások mentése</button>
+</div>
+</div>
+<!-- Include scripts for menu, blog logic and cookie preferences -->
+<!-- Use relative paths and defer loading to ensure proper execution order -->
+<script defer="" src="./scripts.js"></script>
+<script defer="" src="./blog.js"></script>
+<script defer="" src="./cookies.js"></script>
+<!-- Theme toggle button for switching between light and dark modes -->
+<button aria-label="Sötét mód váltása" class="theme-toggle" id="themeToggle">🌙</button>
+</body>
+</html>
